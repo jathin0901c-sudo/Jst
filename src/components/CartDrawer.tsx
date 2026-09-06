@@ -112,25 +112,25 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-50 flex justify-end bg-black/35 backdrop-blur-sm">
+      <div className="fixed inset-0 z-50 flex justify-end bg-black/45 backdrop-blur-sm">
         <motion.div
           initial={{ x: '100%' }}
           animate={{ x: 0 }}
           exit={{ x: '100%' }}
           transition={{ type: 'spring', damping: 30, stiffness: 300 }}
-          className="w-full max-w-xl bg-white/95 backdrop-blur-2xl border-l border-black/[0.08] h-full flex flex-col text-neutral-800 shadow-2xl overflow-hidden"
+          className="w-full max-w-xl bg-[#fdf9f0] border-l border-amber-500/30 h-full flex flex-col text-[#0b162c] shadow-2xl overflow-hidden"
         >
           {/* Header */}
-          <div className="p-6 sm:p-7 border-b border-neutral-100 flex items-center justify-between shrink-0 bg-white">
+          <div className="p-6 sm:p-7 border-b border-amber-600/15 flex items-center justify-between shrink-0 bg-[#fdf9f0]">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-neutral-100 flex items-center justify-center text-neutral-800">
+              <div className="w-10 h-10 rounded-full bg-[#f2ebd8] border border-amber-500/30 flex items-center justify-center text-amber-800">
                 <ShoppingBag className="w-5 h-5" />
               </div>
               <div>
-                <h2 className="text-xl font-bold text-neutral-900 tracking-tight">
+                <h2 className="text-xl font-bold text-[#0b162c] tracking-tight font-serif">
                   Bag ({items.length})
                 </h2>
-                <p className="text-xs text-neutral-500 font-medium">Campus Delivery for {selectedCampus.name}</p>
+                <p className="text-xs text-amber-800 font-medium">Campus Delivery for {selectedCampus.name}</p>
               </div>
             </div>
             <button
@@ -138,7 +138,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                 sound.playBeep(500);
                 onClose();
               }}
-              className="w-10 h-10 rounded-full bg-neutral-100 hover:bg-neutral-200/80 text-neutral-700 flex items-center justify-center cursor-pointer transition-colors"
+              className="w-10 h-10 rounded-full bg-[#f2ebd8] hover:bg-[#eae0cb] text-[#0b162c] border border-amber-600/20 flex items-center justify-center cursor-pointer transition-colors"
             >
               <X className="w-5 h-5" />
             </button>
@@ -147,11 +147,11 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
           {/* Body content */}
           {items.length === 0 ? (
             <div className="flex-1 flex flex-col items-center justify-center p-10 text-center text-neutral-400 space-y-4">
-              <div className="w-20 h-20 rounded-full bg-neutral-100 flex items-center justify-center text-neutral-400">
+              <div className="w-20 h-20 rounded-full bg-[#f2ebd8] border border-amber-500/30 flex items-center justify-center text-amber-800">
                 <ShoppingBag className="w-9 h-9 stroke-[1.5]" />
               </div>
-              <p className="text-xl font-bold text-neutral-900">Your bag is empty</p>
-              <p className="text-sm text-neutral-500 max-w-sm leading-relaxed">
+              <p className="text-xl font-bold text-[#0b162c] font-serif">Your bag is empty</p>
+              <p className="text-sm text-neutral-600 max-w-sm leading-relaxed font-serif">
                 Rent blazers @ ₹199/day with our free 3-size guarantee, or browse new formal shirts & ties.
               </p>
             </div>
@@ -165,18 +165,18 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                   return (
                     <div
                       key={item.cartItemId}
-                      className="p-5 rounded-3xl bg-neutral-50/90 border border-black/[0.04] space-y-3.5 relative"
+                      className="p-5 rounded-3xl bg-[#f4ebd9] border border-amber-600/20 space-y-3.5 relative shadow-xs"
                     >
                       <div className="flex gap-4">
                         <img
                           src={item.product.image}
                           alt={item.product.name}
-                          className="w-20 h-20 object-cover rounded-2xl border border-black/[0.04] shrink-0"
+                          className="w-20 h-20 object-cover rounded-2xl border border-amber-600/20 shrink-0"
                         />
 
                         <div className="flex-1 min-w-0">
                           <div className="flex items-start justify-between gap-2">
-                            <h4 className="font-bold text-neutral-900 text-sm sm:text-base truncate">
+                            <h4 className="font-bold text-[#0b162c] text-sm sm:text-base truncate font-serif">
                               {item.product.name}
                             </h4>
                             <button
@@ -191,16 +191,16 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                           </div>
 
                           <div className="flex items-center gap-2.5 mt-1.5 text-xs text-neutral-500">
-                            <span className="px-2.5 py-1 rounded-lg bg-white border border-black/[0.06] text-neutral-800 font-semibold">
+                            <span className="px-2.5 py-1 rounded-lg bg-[#fdf9f0] border border-amber-600/25 text-[#0b162c] font-bold">
                               Size {item.selectedSize}
                             </span>
-                            <span className="capitalize font-medium">
+                            <span className="capitalize font-medium text-amber-900">
                               {item.orderType === 'rental' ? `Rent (${item.rentalDays || 1} day)` : 'New Retail'}
                             </span>
                           </div>
 
                           <div className="flex items-baseline justify-between mt-3">
-                            <span className="text-base font-extrabold text-neutral-900">
+                            <span className="text-base font-extrabold text-[#0b162c] font-serif">
                               ₹{item.price * item.quantity}
                             </span>
                           </div>
@@ -209,17 +209,17 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
 
                       {/* 3-Size Guarantee Pill for Rentals */}
                       {item.orderType === 'rental' && isBlazer && item.guaranteedSizes && (
-                        <div className="bg-white border border-black/[0.04] rounded-2xl p-3.5 text-xs space-y-1.5">
-                          <div className="flex items-center justify-between text-neutral-900">
-                            <span className="flex items-center gap-2 font-bold">
-                              <Layers className="w-4 h-4 text-neutral-600" />
+                        <div className="bg-[#fdf9f0] border border-amber-600/25 rounded-2xl p-3.5 text-xs space-y-1.5">
+                          <div className="flex items-center justify-between text-[#0b162c]">
+                            <span className="flex items-center gap-2 font-bold font-serif">
+                              <Layers className="w-4 h-4 text-amber-700" />
                               3-Size Delivery Box Included:
                             </span>
-                            <span className="text-emerald-700 font-bold text-xs bg-emerald-50 px-2.5 py-0.5 rounded-full">
+                            <span className="text-emerald-800 font-bold text-xs bg-emerald-100/70 border border-emerald-300 px-2.5 py-0.5 rounded-full">
                               ₹0 Free
                             </span>
                           </div>
-                          <p className="text-neutral-600 text-xs leading-relaxed">
+                          <p className="text-neutral-600 text-xs leading-relaxed font-serif">
                             Delivers Sizes {item.guaranteedSizes.join(', ')} directly to your room. Keep what fits best!
                           </p>
                         </div>
@@ -238,35 +238,35 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                   }}
                   className={`p-4 rounded-3xl border cursor-pointer transition-all flex items-center justify-between ${
                     expressDelivery
-                      ? 'bg-amber-50 border-amber-300 text-amber-900'
-                      : 'bg-neutral-50 border-black/[0.04] text-neutral-600 hover:bg-neutral-100/70'
+                      ? 'bg-amber-500/15 border-amber-500/50 text-amber-950 shadow-sm'
+                      : 'bg-[#f4ebd9] border-amber-600/20 text-[#0b162c] hover:bg-[#eae0cb]'
                   }`}
                 >
                   <div className="flex items-center gap-3">
                     <Flame className={`w-5 h-5 ${expressDelivery ? 'text-amber-600' : 'text-neutral-400'}`} />
                     <div>
                       <div className="flex items-center gap-2">
-                        <span className="font-bold text-neutral-900 block text-sm">30-Min Flash Priority Delivery</span>
-                        <span className="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-1.5 py-0.5 rounded-full">2h Gate Drop is Free</span>
+                        <span className="font-bold text-[#0b162c] block text-sm font-serif">30-Min Flash Priority Delivery</span>
+                        <span className="text-[10px] bg-emerald-100 text-emerald-800 border border-emerald-300 font-bold px-1.5 py-0.5 rounded-full">2h Gate Drop is Free</span>
                       </div>
-                      <span className="text-xs text-neutral-500 font-medium">Standard 2-hour gate drop is ₹0. Upgrade for 30m doorstep flash drop.</span>
+                      <span className="text-xs text-neutral-600 font-medium">Standard 2-hour gate drop is ₹0. Upgrade for 30m doorstep flash drop.</span>
                     </div>
                   </div>
-                  <span className="px-3 py-1 rounded-full bg-amber-100 text-amber-900 font-bold text-xs shrink-0">
+                  <span className="px-3 py-1 rounded-full bg-amber-500/20 text-amber-950 font-bold text-xs shrink-0 border border-amber-500/30">
                     +₹49
                   </span>
                 </div>
               )}
 
               {/* Hostel Delivery Coordinates Form */}
-              <form id="checkout-form" onSubmit={handleCheckout} className="space-y-4 bg-neutral-50/90 p-6 rounded-3xl border border-black/[0.04]">
-                <span className="text-neutral-500 font-bold text-xs block uppercase tracking-wider">
+              <form id="checkout-form" onSubmit={handleCheckout} className="space-y-4 bg-[#f4ebd9] p-6 rounded-3xl border border-amber-600/20 shadow-xs">
+                <span className="text-amber-800 font-bold text-xs block uppercase tracking-wider">
                   Hostel Delivery Details
                 </span>
 
                 <div>
                   <label className="text-neutral-600 text-xs font-semibold block mb-1.5">Campus</label>
-                  <div className="text-neutral-900 font-bold text-sm p-3 bg-white rounded-2xl border border-black/[0.06]">
+                  <div className="text-[#0b162c] font-bold text-sm p-3 bg-[#fdf9f0] rounded-2xl border border-amber-600/20 font-serif">
                     {selectedCampus.name}
                   </div>
                 </div>
@@ -276,7 +276,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                   <select
                     value={hostel}
                     onChange={(e) => setHostel(e.target.value)}
-                    className="w-full bg-white border border-black/[0.08] rounded-2xl p-3 text-neutral-900 font-medium focus:border-neutral-900 outline-none cursor-pointer text-sm transition-colors"
+                    className="w-full bg-[#fdf9f0] border border-amber-600/25 rounded-2xl p-3 text-[#0b162c] font-medium focus:border-amber-500 outline-none cursor-pointer text-sm transition-colors"
                   >
                     {selectedCampus.hostels.map(h => (
                       <option key={h} value={h}>{h}</option>
@@ -293,7 +293,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                       value={roomNumber}
                       onChange={(e) => setRoomNumber(e.target.value)}
                       required
-                      className="w-full bg-white border border-black/[0.08] rounded-2xl p-3 text-neutral-900 font-medium focus:border-neutral-900 outline-none text-sm transition-colors"
+                      className="w-full bg-[#fdf9f0] border border-amber-600/25 rounded-2xl p-3 text-[#0b162c] font-medium focus:border-amber-500 outline-none text-sm transition-colors"
                     />
                   </div>
 
@@ -305,7 +305,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                       value={studentName}
                       onChange={(e) => setStudentName(e.target.value)}
                       required
-                      className="w-full bg-white border border-black/[0.08] rounded-2xl p-3 text-neutral-900 font-medium focus:border-neutral-900 outline-none text-sm transition-colors"
+                      className="w-full bg-[#fdf9f0] border border-amber-600/25 rounded-2xl p-3 text-[#0b162c] font-medium focus:border-amber-500 outline-none text-sm transition-colors"
                     />
                   </div>
                 </div>
@@ -318,7 +318,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                     value={studentPhone}
                     onChange={(e) => setStudentPhone(e.target.value)}
                     required
-                    className="w-full bg-white border border-black/[0.08] rounded-2xl p-3 text-neutral-900 font-medium focus:border-neutral-900 outline-none text-sm transition-colors"
+                    className="w-full bg-[#fdf9f0] border border-amber-600/25 rounded-2xl p-3 text-[#0b162c] font-medium focus:border-amber-500 outline-none text-sm transition-colors"
                   />
                 </div>
 
@@ -334,14 +334,14 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                       }}
                       className={`p-4 rounded-2xl border text-left cursor-pointer transition-all flex items-center gap-3 ${
                         paymentMethod === 'UPI'
-                          ? 'bg-neutral-900 border-neutral-900 text-white shadow-xs'
-                          : 'bg-white border-black/[0.06] text-neutral-700 hover:bg-neutral-100'
+                          ? 'bg-[#0b162c] border-amber-500/50 text-white shadow-md'
+                          : 'bg-[#fdf9f0] border-amber-600/20 text-[#0b162c] hover:bg-[#f2ebd8]'
                       }`}
                     >
-                      <CreditCard className={`w-5 h-5 ${paymentMethod === 'UPI' ? 'text-white' : 'text-neutral-500'}`} />
+                      <CreditCard className={`w-5 h-5 ${paymentMethod === 'UPI' ? 'text-amber-300' : 'text-neutral-500'}`} />
                       <div>
-                        <span className="block font-bold text-xs sm:text-sm">UPI Fast Pay</span>
-                        <span className={`text-xs ${paymentMethod === 'UPI' ? 'text-neutral-300' : 'text-neutral-500'}`}>GPay / PhonePe</span>
+                        <span className="block font-bold text-xs sm:text-sm font-serif">UPI Fast Pay</span>
+                        <span className={`text-xs ${paymentMethod === 'UPI' ? 'text-amber-200/80' : 'text-neutral-500'}`}>GPay / PhonePe</span>
                       </div>
                     </button>
 
@@ -353,14 +353,14 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                       }}
                       className={`p-4 rounded-2xl border text-left cursor-pointer transition-all flex items-center gap-3 ${
                         paymentMethod === 'COD'
-                          ? 'bg-neutral-900 border-neutral-900 text-white shadow-xs'
-                          : 'bg-white border-black/[0.06] text-neutral-700 hover:bg-neutral-100'
+                          ? 'bg-[#0b162c] border-amber-500/50 text-white shadow-md'
+                          : 'bg-[#fdf9f0] border-amber-600/20 text-[#0b162c] hover:bg-[#f2ebd8]'
                       }`}
                     >
-                      <Banknote className={`w-5 h-5 ${paymentMethod === 'COD' ? 'text-white' : 'text-neutral-500'}`} />
+                      <Banknote className={`w-5 h-5 ${paymentMethod === 'COD' ? 'text-amber-300' : 'text-neutral-500'}`} />
                       <div>
-                        <span className="block font-bold text-xs sm:text-sm">Cash on Delivery</span>
-                        <span className={`text-xs ${paymentMethod === 'COD' ? 'text-neutral-300' : 'text-neutral-500'}`}>Cash at Gate</span>
+                        <span className="block font-bold text-xs sm:text-sm font-serif">Cash on Delivery</span>
+                        <span className={`text-xs ${paymentMethod === 'COD' ? 'text-amber-200/80' : 'text-neutral-500'}`}>Cash at Gate</span>
                       </div>
                     </button>
                   </div>
@@ -368,9 +368,9 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
 
                 {/* Pre Damage Prevention Deposit Notice */}
                 {depositAmount > 0 ? (
-                  <div className="p-4 rounded-2xl bg-amber-50 border border-amber-300/80 text-amber-950 text-xs leading-relaxed space-y-1.5">
+                  <div className="p-4 rounded-2xl bg-amber-500/15 border border-amber-500/40 text-amber-950 text-xs leading-relaxed space-y-1.5 font-serif">
                     <div className="flex items-center gap-2 font-bold text-amber-950">
-                      <ShieldCheck className="w-4 h-4 text-amber-600 shrink-0" />
+                      <ShieldCheck className="w-4 h-4 text-amber-700 shrink-0" />
                       <span>Pre Damage Prevention Deposit: ₹{depositAmount}</span>
                     </div>
                     <p className="text-amber-900 text-xs leading-relaxed">
@@ -378,9 +378,9 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                     </p>
                   </div>
                 ) : (
-                  <div className="p-4 rounded-2xl bg-emerald-50/80 border border-emerald-200/80 text-emerald-950 text-xs leading-relaxed flex items-center gap-3 font-medium">
-                    <ShieldCheck className="w-5 h-5 text-emerald-600 shrink-0" />
-                    <span>
+                  <div className="p-4 rounded-2xl bg-emerald-50 border border-emerald-300 text-emerald-950 text-xs leading-relaxed flex items-center gap-3 font-medium">
+                    <ShieldCheck className="w-5 h-5 text-emerald-700 shrink-0" />
+                    <span className="font-serif">
                       <strong className="font-bold">Verified Student Checkout:</strong> Fast dispatch to campus hostels across Delhi NCR & Rohtak.
                     </span>
                   </div>
@@ -391,42 +391,42 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
 
           {/* Footer Billing Bar */}
           {items.length > 0 && (
-            <div className="bg-neutral-50/90 border-t border-neutral-100 p-6 sm:p-7 space-y-4 shrink-0">
+            <div className="bg-[#f4ebd9] border-t border-amber-600/20 p-6 sm:p-7 space-y-4 shrink-0">
               <div className="space-y-2 text-sm">
-                <div className="flex justify-between text-neutral-500">
+                <div className="flex justify-between text-neutral-600 font-serif">
                   <span>Rental / Items Fee:</span>
-                  <span className="text-neutral-900 font-semibold">₹{subtotal}</span>
+                  <span className="text-[#0b162c] font-bold">₹{subtotal}</span>
                 </div>
                 {depositAmount > 0 && (
-                  <div className="flex justify-between text-amber-900 font-semibold">
+                  <div className="flex justify-between text-amber-900 font-semibold font-serif">
                     <span>Pre-Damage Prevention Deposit:</span>
                     <span>₹{depositAmount}</span>
                   </div>
                 )}
-                <div className="flex justify-between text-emerald-800 font-medium">
+                <div className="flex justify-between text-emerald-800 font-medium font-serif">
                   <span>2-Hour Gate Drop:</span>
                   <span className="font-bold">Free</span>
                 </div>
                 {expressCharge > 0 && (
-                  <div className="flex justify-between text-amber-800 font-medium">
+                  <div className="flex justify-between text-amber-800 font-medium font-serif">
                     <span>30-Min Flash Priority Delivery:</span>
                     <span className="font-bold">+₹49</span>
                   </div>
                 )}
                 {depositAmount > 0 && (
-                  <div className="p-3 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-900 text-xs space-y-1">
+                  <div className="p-3 rounded-2xl bg-emerald-50 border border-emerald-300 text-emerald-950 text-xs space-y-1 font-serif">
                     <div className="flex justify-between font-bold">
                       <span>Refund on Gate Return:</span>
-                      <span className="text-emerald-700 font-extrabold text-sm">₹{expectedRefund} back to UPI</span>
+                      <span className="text-emerald-800 font-extrabold text-sm">₹{expectedRefund} back to UPI</span>
                     </div>
-                    <div className="text-[11px] text-emerald-800 leading-snug">
+                    <div className="text-[11px] text-emerald-900 leading-snug">
                       *Agent confirms zero damage ➔ we deduct ₹{rentalSubtotal} & immediately send back ₹{expectedRefund}.
                     </div>
                   </div>
                 )}
-                <div className="flex justify-between text-neutral-900 font-bold text-base pt-3 border-t border-neutral-200">
+                <div className="flex justify-between text-[#0b162c] font-bold text-base pt-3 border-t border-amber-600/20 font-serif">
                   <span>Total Payable Now:</span>
-                  <span className="text-2xl font-extrabold tracking-tight text-neutral-900">
+                  <span className="text-2xl font-extrabold tracking-tight text-[#0b162c]">
                     ₹{total}
                   </span>
                 </div>
@@ -436,16 +436,16 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                 type="submit"
                 form="checkout-form"
                 disabled={isProcessing}
-                className="w-full py-4 rounded-full bg-neutral-900 hover:bg-black disabled:opacity-50 text-white font-bold text-sm sm:text-base transition-all cursor-pointer shadow-sm flex items-center justify-center gap-2.5 active:scale-[0.99]"
+                className="w-full py-4 rounded-full bg-[#0b162c] hover:bg-[#122449] disabled:opacity-50 text-white font-bold text-sm sm:text-base transition-all cursor-pointer shadow-md flex items-center justify-center gap-2.5 active:scale-[0.99] border border-amber-500/40"
               >
                 {isProcessing ? (
                   <>
-                    <Sparkles className="w-5 h-5 animate-spin text-white" />
+                    <Sparkles className="w-5 h-5 animate-spin text-amber-300" />
                     <span>Processing Order...</span>
                   </>
                 ) : (
                   <>
-                    <CheckCircle2 className="w-5 h-5 text-white" />
+                    <CheckCircle2 className="w-5 h-5 text-amber-400" />
                     <span>Place Order (₹{total})</span>
                   </>
                 )}

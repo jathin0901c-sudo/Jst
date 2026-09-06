@@ -7,8 +7,8 @@
 
 @layer base {
   html, body {
-    background-color: #f7f7f8;
-    color: #1a1a1c;
+    background-color: #faf4e8;
+    color: #0b162c;
     font-family: "Times New Roman", Times, "Playfair Display", "Baskerville", Georgia, serif;
     overflow-x: hidden;
     letter-spacing: 0.005em;
@@ -19,6 +19,7 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: "Times New Roman", Times, "Playfair Display", "Baskerville", Georgia, serif;
     letter-spacing: -0.015em;
+    color: #0b162c;
   }
 
   p, span, a, button, input, select, textarea, label, li, th, td, blockquote {
@@ -30,46 +31,84 @@
   }
 }
 
-/* Apple-style smooth scrollbar */
+/* Luxury gold & navy scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: #faf4e8;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #d2d2d7;
+  background: #d4af37;
   border-radius: 9999px;
+  border: 2px solid #faf4e8;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #86868b;
+  background: #b8860b;
 }
 
-/* Apple subtle card elevation & material effects */
-.apple-glass {
-  background: rgba(255, 255, 255, 0.88);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+/* Luxury cream, navy, and gold material elevation effects */
+.luxury-gold-border {
+  border-color: rgba(197, 155, 67, 0.3);
 }
 
-.apple-card {
-  background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  border-radius: 1.25rem;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+.luxury-gold-glow {
+  box-shadow: 0 4px 20px -2px rgba(197, 155, 67, 0.22), 0 0 0 1px rgba(212, 175, 55, 0.25);
+}
+
+.luxury-card {
+  background-color: #fdf9f0;
+  border: 1px solid rgba(197, 155, 67, 0.22);
+  box-shadow: 0 4px 24px -2px rgba(11, 22, 44, 0.04), 0 0 0 1px rgba(197, 155, 67, 0.12);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.apple-card:hover {
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.07);
+.luxury-card:hover {
+  border-color: rgba(197, 155, 67, 0.4);
+  box-shadow: 0 16px 36px -4px rgba(11, 22, 44, 0.08), 0 0 0 1px rgba(212, 175, 55, 0.35);
+}
+
+.navy-card {
+  background: linear-gradient(135deg, #091224 0%, #0d1a36 50%, #122449 100%);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  box-shadow: 0 12px 36px -4px rgba(9, 18, 36, 0.35);
+}
+
+.gold-gradient-btn {
+  background: linear-gradient(135deg, #c59b43 0%, #e2be6d 50%, #b8860b 100%);
+  color: #080f1f;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 4px 15px rgba(197, 155, 67, 0.3);
+  transition: all 0.2s ease;
+}
+
+.gold-gradient-btn:hover {
+  background: linear-gradient(135deg, #d4af37 0%, #f0cf85 50%, #c59b43 100%);
+  box-shadow: 0 6px 20px rgba(197, 155, 67, 0.45);
+  transform: translateY(-1px);
+}
+
+.navy-btn {
+  background: #0b162c;
+  color: #faf4e8;
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  box-shadow: 0 4px 12px rgba(11, 22, 44, 0.2);
+  transition: all 0.2s ease;
+}
+
+.navy-btn:hover {
+  background: #122346;
+  border-color: rgba(212, 175, 55, 0.6);
+  box-shadow: 0 6px 18px rgba(11, 22, 44, 0.3);
+  transform: translateY(-1px);
 }
 
 /* Luxury imprint seal styling */
 .luxury-seal-imprint {
-  box-shadow: 0 4px 20px -2px rgba(180, 130, 50, 0.2), 0 0 0 1px rgba(190, 140, 60, 0.25), inset 0 1px 2px rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 20px -2px rgba(197, 155, 67, 0.35), 0 0 0 1.5px rgba(212, 175, 55, 0.4), inset 0 1px 2px rgba(255, 255, 255, 0.9);
 }
 

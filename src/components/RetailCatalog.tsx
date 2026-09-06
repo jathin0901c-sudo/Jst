@@ -50,25 +50,25 @@ export const RetailCatalog: React.FC<RetailCatalogProps> = ({
 
   return (
     <div className="space-y-8">
-      {/* Clean Apple Retail Banner */}
-      <div className="bg-white border border-black/[0.06] rounded-3xl p-8 sm:p-10 shadow-[0_4px_24px_rgba(0,0,0,0.03)]">
+      {/* Luxury Retail Banner */}
+      <div className="bg-[#fdf9f0] border border-amber-600/30 rounded-3xl p-8 sm:p-10 shadow-md font-serif">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-neutral-100 text-neutral-800 text-xs sm:text-sm font-semibold mb-3">
-              <Sparkles className="w-4 h-4 text-neutral-600" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#f2ebd8] border border-amber-500/30 text-amber-900 text-xs sm:text-sm font-semibold mb-3">
+              <Sparkles className="w-4 h-4 text-amber-700" />
               <span>Direct Brand & Outlet Sourcing</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-neutral-900 tracking-tight">
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#0b162c] tracking-tight">
               Buy Brand New Formal Essentials
             </h2>
-            <p className="text-base text-neutral-600 mt-2 leading-relaxed">
+            <p className="text-base text-neutral-700 mt-2 leading-relaxed font-sans">
               Curated tailored essentials from Allen Solly for your permanent corporate wardrobe. Blazers (₹5k–6k), 4-Piece Combos, Non-Iron Shirts, Trousers, Ties, and Oxford Shoes.
             </p>
           </div>
 
           <div className="flex flex-wrap items-center gap-2 self-start lg:self-center">
             {['Allen Solly', 'Bata', 'Hush Puppies'].map((b) => (
-              <span key={b} className="px-4 py-1.5 rounded-full bg-neutral-100 border border-black/[0.04] text-neutral-800 text-xs sm:text-sm font-medium">
+              <span key={b} className="px-4 py-1.5 rounded-full bg-[#f2ebd8] border border-amber-600/20 text-[#0b162c] text-xs sm:text-sm font-semibold">
                 {b}
               </span>
             ))}
@@ -77,10 +77,10 @@ export const RetailCatalog: React.FC<RetailCatalogProps> = ({
       </div>
 
       {/* Filter and Sort Toolbar */}
-      <div className="bg-white border border-black/[0.06] p-5 sm:p-6 rounded-3xl shadow-[0_2px_12px_rgba(0,0,0,0.02)] space-y-4">
+      <div className="bg-[#fdf9f0] border border-amber-600/25 p-5 sm:p-6 rounded-3xl shadow-sm space-y-4 font-serif">
         <div className="flex flex-wrap items-center justify-between gap-4">
           {/* Category Tabs */}
-          <div className="flex items-center p-1.5 rounded-full bg-neutral-200/70 border border-black/[0.04] overflow-x-auto max-w-full">
+          <div className="flex items-center p-1.5 rounded-full bg-[#f2ebd8] border border-amber-600/20 overflow-x-auto max-w-full">
             <button
               onClick={() => {
                 sound.playBeep(550);
@@ -88,8 +88,8 @@ export const RetailCatalog: React.FC<RetailCatalogProps> = ({
               }}
               className={`px-5 py-2 rounded-full text-sm sm:text-base font-semibold transition-all cursor-pointer whitespace-nowrap ${
                 selectedCategory === 'all'
-                  ? 'bg-white text-neutral-900 shadow-sm'
-                  : 'text-neutral-600 hover:text-neutral-900'
+                  ? 'bg-[#0b162c] text-white shadow-sm border border-amber-500/40'
+                  : 'text-[#0b162c] hover:text-amber-800'
               }`}
             >
               All Essentials ({retailProducts.length})
@@ -102,8 +102,8 @@ export const RetailCatalog: React.FC<RetailCatalogProps> = ({
               }}
               className={`px-5 py-2 rounded-full text-sm sm:text-base font-semibold transition-all cursor-pointer whitespace-nowrap ${
                 selectedCategory === 'blazer'
-                  ? 'bg-white text-neutral-900 shadow-sm'
-                  : 'text-neutral-600 hover:text-neutral-900'
+                  ? 'bg-[#0b162c] text-white shadow-sm border border-amber-500/40'
+                  : 'text-[#0b162c] hover:text-amber-800'
               }`}
             >
               Blazers (from ₹5,499)
@@ -116,8 +116,8 @@ export const RetailCatalog: React.FC<RetailCatalogProps> = ({
               }}
               className={`px-5 py-2 rounded-full text-sm sm:text-base font-semibold transition-all cursor-pointer whitespace-nowrap ${
                 selectedCategory === 'combo'
-                  ? 'bg-white text-neutral-900 shadow-sm'
-                  : 'text-neutral-600 hover:text-neutral-900'
+                  ? 'bg-[#0b162c] text-white shadow-sm border border-amber-500/40'
+                  : 'text-[#0b162c] hover:text-amber-800'
               }`}
             >
               Combos (2-Pc & 4-Pc)
@@ -130,8 +130,8 @@ export const RetailCatalog: React.FC<RetailCatalogProps> = ({
               }}
               className={`px-5 py-2 rounded-full text-sm sm:text-base font-semibold transition-all cursor-pointer whitespace-nowrap ${
                 selectedCategory === 'tie'
-                  ? 'bg-white text-neutral-900 shadow-sm'
-                  : 'text-neutral-600 hover:text-neutral-900'
+                  ? 'bg-[#0b162c] text-white shadow-sm border border-amber-500/40'
+                  : 'text-[#0b162c] hover:text-amber-800'
               }`}
             >
               Silk Ties (from ₹899)
@@ -144,8 +144,8 @@ export const RetailCatalog: React.FC<RetailCatalogProps> = ({
               }}
               className={`px-5 py-2 rounded-full text-sm sm:text-base font-semibold transition-all cursor-pointer whitespace-nowrap ${
                 selectedCategory === 'shirt'
-                  ? 'bg-white text-neutral-900 shadow-sm'
-                  : 'text-neutral-600 hover:text-neutral-900'
+                  ? 'bg-[#0b162c] text-white shadow-sm border border-amber-500/40'
+                  : 'text-[#0b162c] hover:text-amber-800'
               }`}
             >
               Shirts (₹1,299)
@@ -158,8 +158,8 @@ export const RetailCatalog: React.FC<RetailCatalogProps> = ({
               }}
               className={`px-5 py-2 rounded-full text-sm sm:text-base font-semibold transition-all cursor-pointer whitespace-nowrap ${
                 selectedCategory === 'trouser'
-                  ? 'bg-white text-neutral-900 shadow-sm'
-                  : 'text-neutral-600 hover:text-neutral-900'
+                  ? 'bg-[#0b162c] text-white shadow-sm border border-amber-500/40'
+                  : 'text-[#0b162c] hover:text-amber-800'
               }`}
             >
               Trousers (from ₹1,499)
@@ -172,8 +172,8 @@ export const RetailCatalog: React.FC<RetailCatalogProps> = ({
               }}
               className={`px-5 py-2 rounded-full text-sm sm:text-base font-semibold transition-all cursor-pointer whitespace-nowrap ${
                 selectedCategory === 'shoes'
-                  ? 'bg-white text-neutral-900 shadow-sm'
-                  : 'text-neutral-600 hover:text-neutral-900'
+                  ? 'bg-[#0b162c] text-white shadow-sm border border-amber-500/40'
+                  : 'text-[#0b162c] hover:text-amber-800'
               }`}
             >
               Shoes
@@ -182,14 +182,14 @@ export const RetailCatalog: React.FC<RetailCatalogProps> = ({
 
           {/* Sort By Dropdown */}
           <div className="flex items-center gap-3">
-            <span className="text-neutral-500 hidden sm:inline text-sm font-medium">Sort By:</span>
+            <span className="text-neutral-600 hidden sm:inline text-sm font-medium">Sort By:</span>
             <select
               value={sortBy}
               onChange={(e) => {
                 sound.playBeep(600);
                 setSortBy(e.target.value as any);
               }}
-              className="bg-neutral-100 border border-black/[0.06] rounded-full px-4 py-2 text-neutral-800 outline-none cursor-pointer text-sm font-medium hover:bg-neutral-200/80 transition-colors"
+              className="bg-[#f2ebd8] border border-amber-600/20 rounded-full px-4 py-2 text-[#0b162c] outline-none cursor-pointer text-sm font-semibold hover:bg-[#eae0cb] transition-colors"
             >
               <option value="featured">Featured Student Picks</option>
               <option value="price-low">Price: Low to High</option>
@@ -200,14 +200,14 @@ export const RetailCatalog: React.FC<RetailCatalogProps> = ({
         </div>
 
         {/* Brand Filter Pills */}
-        <div className="flex items-center gap-2 pt-3 border-t border-neutral-100 overflow-x-auto">
-          <span className="text-neutral-500 text-sm shrink-0 font-medium">Brand:</span>
+        <div className="flex items-center gap-2 pt-3 border-t border-amber-600/15 overflow-x-auto">
+          <span className="text-neutral-600 text-sm shrink-0 font-medium">Brand:</span>
           <button
             onClick={() => setSelectedBrand('all')}
             className={`px-3.5 py-1.5 rounded-full text-xs sm:text-sm cursor-pointer font-semibold transition-all ${
               selectedBrand === 'all'
-                ? 'bg-neutral-900 text-white shadow-xs'
-                : 'bg-neutral-100 text-neutral-700 hover:bg-neutral-200/80'
+                ? 'bg-[#0b162c] text-white shadow-xs border border-amber-500/40'
+                : 'bg-[#f2ebd8] text-[#0b162c] border border-amber-600/15 hover:bg-[#eae0cb]'
             }`}
           >
             All Brands
@@ -221,8 +221,8 @@ export const RetailCatalog: React.FC<RetailCatalogProps> = ({
               }}
               className={`px-3.5 py-1.5 rounded-full text-xs sm:text-sm cursor-pointer font-medium transition-all ${
                 selectedBrand === brand
-                  ? 'bg-neutral-900 text-white shadow-xs font-semibold'
-                  : 'bg-neutral-100 text-neutral-700 hover:bg-neutral-200/80'
+                  ? 'bg-[#0b162c] text-white shadow-xs font-semibold border border-amber-500/40'
+                  : 'bg-[#f2ebd8] text-[#0b162c] border border-amber-600/15 hover:bg-[#eae0cb]'
               }`}
             >
               {brand}
@@ -243,9 +243,9 @@ export const RetailCatalog: React.FC<RetailCatalogProps> = ({
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.25 }}
-              className="bg-white border border-black/[0.06] rounded-3xl overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.09)] transition-all duration-300 flex flex-col group"
+              className="bg-[#fdf9f0] border border-amber-600/25 rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 flex flex-col group font-serif"
             >
-              <div className="relative h-80 sm:h-96 overflow-hidden bg-[#fbfbfd]">
+              <div className="relative h-80 sm:h-96 overflow-hidden bg-[#f8f3e7]">
                 <img
                   src={product.image}
                   alt={product.name}
@@ -254,23 +254,23 @@ export const RetailCatalog: React.FC<RetailCatalogProps> = ({
                 />
 
                 <div className="absolute top-4 left-4 flex flex-wrap gap-2">
-                  <span className="px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-md text-neutral-900 text-sm font-semibold shadow-xs border border-black/[0.04]">
+                  <span className="px-3.5 py-1.5 rounded-full bg-[#fdf9f0]/95 backdrop-blur-md text-[#0b162c] text-sm font-bold shadow-xs border border-amber-600/20">
                     {product.brand}
                   </span>
                   {product.category === 'combo' && (
-                    <span className="px-3.5 py-1.5 rounded-full bg-neutral-900 text-white text-xs sm:text-sm font-semibold shadow-xs">
+                    <span className="px-3.5 py-1.5 rounded-full bg-[#0b162c] text-amber-300 border border-amber-500/40 text-xs sm:text-sm font-semibold shadow-xs">
                       {product.id.includes('2p') ? '2-Piece (Blazer + Tie)' : '4-Piece Full Suite'}
                     </span>
                   )}
-                  <span className="px-3.5 py-1.5 rounded-full bg-emerald-600 text-white text-sm font-semibold shadow-xs">
+                  <span className="px-3.5 py-1.5 rounded-full bg-amber-600 text-white text-sm font-bold shadow-xs">
                     {discountPercent}% Off
                   </span>
                 </div>
 
-                <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md border border-black/[0.05] rounded-2xl px-4 py-2.5 flex items-center justify-between text-sm shadow-xs text-neutral-800">
+                <div className="absolute bottom-4 left-4 right-4 bg-[#fdf9f0]/95 backdrop-blur-md border border-amber-600/20 rounded-2xl px-4 py-2.5 flex items-center justify-between text-sm shadow-xs text-[#0b162c]">
                   <span className="font-semibold">Brand Direct Box</span>
-                  <span className="text-emerald-700 font-semibold flex items-center gap-1.5">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-600" /> Factory Fresh
+                  <span className="text-emerald-800 font-bold flex items-center gap-1.5">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-700" /> Factory Fresh
                   </span>
                 </div>
               </div>
@@ -282,18 +282,18 @@ export const RetailCatalog: React.FC<RetailCatalogProps> = ({
                       sound.playBeep(650);
                       onSelectProduct(product);
                     }}
-                    className="text-xl sm:text-2xl font-bold text-neutral-900 hover:text-blue-600 transition-colors cursor-pointer tracking-tight"
+                    className="text-xl sm:text-2xl font-bold text-[#0b162c] hover:text-amber-700 transition-colors cursor-pointer tracking-tight"
                   >
                     {product.name}
                   </h3>
-                  <p className="text-sm text-neutral-500 font-medium">
+                  <p className="text-sm text-neutral-600 font-medium font-sans">
                     {product.subtitle}
                   </p>
                   
                   {/* Color Badge */}
                   <div className="pt-1">
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-neutral-100 border border-black/[0.04] text-xs font-semibold text-neutral-800">
-                      <span className="w-2 h-2 rounded-full bg-neutral-900"></span>
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#f2ebd8] border border-amber-600/20 text-xs font-bold text-[#0b162c]">
+                      <span className="w-2 h-2 rounded-full bg-[#0b162c]"></span>
                       Color: {product.color}
                     </span>
                   </div>
@@ -301,23 +301,23 @@ export const RetailCatalog: React.FC<RetailCatalogProps> = ({
 
                 <div className="flex items-baseline justify-between pt-1">
                   <div>
-                    <span className="text-2xl sm:text-3xl font-extrabold tracking-tight text-neutral-900">
+                    <span className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#0b162c]">
                       ₹{product.retailPrice?.toLocaleString('en-IN')}
                     </span>
-                    <span className="text-sm text-neutral-400 line-through ml-2.5">
+                    <span className="text-sm text-neutral-500 line-through ml-2.5 font-sans">
                       ₹{product.mrp.toLocaleString('en-IN')}
                     </span>
                   </div>
-                  <span className="text-xs sm:text-sm text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full font-semibold">
+                  <span className="text-xs sm:text-sm text-emerald-900 bg-emerald-100 border border-emerald-300 px-3 py-1 rounded-full font-bold">
                     Save ₹{((product.mrp - (product.retailPrice || 0))).toLocaleString('en-IN')}
                   </span>
                 </div>
 
                 {/* Size options */}
-                <div className="space-y-2.5">
-                  <div className="flex items-center justify-between text-sm text-neutral-500">
-                    <span className="font-medium text-neutral-700">Select Size:</span>
-                    <span className="font-semibold text-neutral-900">Size {size}</span>
+                <div className="space-y-2.5 font-sans">
+                  <div className="flex items-center justify-between text-sm text-neutral-600">
+                    <span className="font-semibold text-neutral-700">Select Size:</span>
+                    <span className="font-bold text-[#0b162c]">Size {size}</span>
                   </div>
                   <div className="flex flex-wrap gap-2">
                     {product.sizes.map(sz => (
@@ -329,8 +329,8 @@ export const RetailCatalog: React.FC<RetailCatalogProps> = ({
                         }}
                         className={`px-4 py-2 rounded-xl text-sm font-semibold cursor-pointer transition-all ${
                           size === sz
-                            ? 'bg-neutral-900 text-white shadow-xs scale-105'
-                            : 'bg-neutral-100 text-neutral-700 hover:bg-neutral-200/80'
+                            ? 'bg-[#0b162c] text-white shadow-xs scale-105 border border-amber-500/40'
+                            : 'bg-[#f4ebd9] text-[#0b162c] border border-amber-600/20 hover:bg-[#eae0cb]'
                         }`}
                       >
                         {sz}
@@ -346,7 +346,7 @@ export const RetailCatalog: React.FC<RetailCatalogProps> = ({
                       sound.playBeep(650);
                       onSelectProduct(product);
                     }}
-                    className="py-3.5 px-4 rounded-full bg-neutral-100 hover:bg-neutral-200/80 text-neutral-900 text-sm font-semibold cursor-pointer text-center transition-colors"
+                    className="py-3.5 px-4 rounded-full bg-[#fdf9f0] border border-amber-600/25 hover:bg-[#f2ebd8] text-[#0b162c] text-sm font-bold cursor-pointer text-center transition-colors"
                   >
                     Details
                   </button>
@@ -356,10 +356,10 @@ export const RetailCatalog: React.FC<RetailCatalogProps> = ({
                       sound.playHologramConfirm();
                       onAddToCart(product, size);
                     }}
-                    className="py-3.5 px-4 rounded-full bg-neutral-900 hover:bg-black text-white font-semibold text-sm cursor-pointer flex items-center justify-center gap-2 shadow-sm transition-all active:scale-95"
+                    className="py-3.5 px-4 rounded-full bg-[#0b162c] hover:bg-[#122449] text-white font-bold text-sm cursor-pointer flex items-center justify-center gap-2 shadow-md transition-all active:scale-95 border border-amber-500/40"
                   >
-                    <ShoppingBag className="w-4 h-4" />
-                    <span>Add to Bag</span>
+                    <ShoppingBag className="w-4 h-4 text-amber-300" />
+                    <span className="text-amber-300">Add to Bag</span>
                   </button>
                 </div>
               </div>

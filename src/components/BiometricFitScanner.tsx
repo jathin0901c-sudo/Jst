@@ -91,19 +91,19 @@ export const BiometricFitScanner: React.FC<BiometricFitScannerProps> = ({ isOpen
           animate={{ scale: 1, opacity: 1, y: 0 }}
           exit={{ scale: 0.95, opacity: 0, y: 20 }}
           transition={{ duration: 0.25 }}
-          className="w-full max-w-2xl bg-white border border-black/[0.08] rounded-3xl shadow-[0_24px_70px_rgba(0,0,0,0.14)] overflow-hidden text-neutral-900 relative flex flex-col max-h-[88vh]"
+          className="w-full max-w-2xl bg-[#fdf9f0] border border-amber-600/30 rounded-3xl shadow-2xl overflow-hidden text-[#0b162c] relative flex flex-col max-h-[88vh]"
         >
           {/* Header */}
-          <div className="p-6 sm:p-7 border-b border-neutral-100 flex items-center justify-between shrink-0 bg-white">
+          <div className="p-6 sm:p-7 border-b border-amber-600/15 flex items-center justify-between shrink-0 bg-[#fdf9f0]">
             <div className="flex items-center gap-3.5">
-              <div className="w-10 h-10 rounded-2xl bg-neutral-100 flex items-center justify-center text-neutral-800">
-                <Ruler className="w-5 h-5 text-neutral-700" />
+              <div className="w-10 h-10 rounded-2xl bg-[#f2ebd8] border border-amber-600/20 flex items-center justify-center text-[#0b162c]">
+                <Ruler className="w-5 h-5 text-amber-700" />
               </div>
               <div>
-                <h3 className="text-xl font-bold tracking-tight text-neutral-900">
+                <h3 className="text-xl font-bold tracking-tight text-[#0b162c] font-serif">
                   Smart Fit Calculator
                 </h3>
-                <p className="text-xs text-neutral-500 font-medium">
+                <p className="text-xs text-neutral-600 font-medium font-serif">
                   Calculate your precise blazer chest size & 3-size pack
                 </p>
               </div>
@@ -114,7 +114,7 @@ export const BiometricFitScanner: React.FC<BiometricFitScannerProps> = ({ isOpen
                 sound.playBeep(500);
                 onClose();
               }}
-              className="w-10 h-10 rounded-full bg-neutral-100 hover:bg-neutral-200/80 text-neutral-700 flex items-center justify-center cursor-pointer transition-colors"
+              className="w-10 h-10 rounded-full bg-[#f2ebd8] hover:bg-[#eae0cb] text-[#0b162c] border border-amber-600/20 flex items-center justify-center cursor-pointer transition-colors"
             >
               <X className="w-5 h-5" />
             </button>
@@ -122,39 +122,39 @@ export const BiometricFitScanner: React.FC<BiometricFitScannerProps> = ({ isOpen
 
           <div className="p-6 sm:p-8 space-y-6 overflow-y-auto">
             {/* Visual silhouette representation */}
-            <div className="relative h-44 rounded-3xl bg-neutral-50/90 border border-black/[0.04] flex items-center justify-center overflow-hidden">
+            <div className="relative h-44 rounded-3xl bg-[#f4ebd9] border border-amber-600/20 flex items-center justify-center overflow-hidden">
               {isScanning && (
                 <motion.div
                   animate={{ y: [-70, 70, -70] }}
                   transition={{ duration: 1.2, repeat: Infinity, ease: 'easeInOut' }}
-                  className="absolute inset-x-0 h-1 bg-blue-500 shadow-[0_0_16px_rgba(59,130,246,0.8)] z-20"
+                  className="absolute inset-x-0 h-1 bg-amber-500 shadow-[0_0_16px_rgba(245,158,11,0.8)] z-20"
                 />
               )}
 
-              <div className="relative z-10 flex flex-col items-center">
-                <svg className="w-36 h-36 text-neutral-400" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="1.2">
-                  <path d="M 40 20 L 50 28 L 60 20" stroke="#1d1d1f" strokeWidth="1.5" />
-                  <path d="M 40 20 L 32 30 L 38 60 L 50 65 L 62 60 L 68 30 L 60 20" stroke="#1d1d1f" strokeWidth="1.5" />
-                  <path d="M 40 20 L 44 48 L 50 65" stroke="#737373" strokeWidth="1.2" />
-                  <path d="M 60 20 L 56 48 L 50 65" stroke="#737373" strokeWidth="1.2" />
-                  <line x1="58" y1="36" x2="65" y2="36" stroke="#1d1d1f" strokeWidth="1.2" />
-                  <circle cx="32" cy="30" r="2" fill="#1d1d1f" />
-                  <circle cx="68" cy="30" r="2" fill="#1d1d1f" />
+              <div className="relative z-10 flex flex-col items-center font-serif">
+                <svg className="w-36 h-36 text-amber-700/60" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="1.2">
+                  <path d="M 40 20 L 50 28 L 60 20" stroke="#0b162c" strokeWidth="1.5" />
+                  <path d="M 40 20 L 32 30 L 38 60 L 50 65 L 62 60 L 68 30 L 60 20" stroke="#0b162c" strokeWidth="1.5" />
+                  <path d="M 40 20 L 44 48 L 50 65" stroke="#92400e" strokeWidth="1.2" />
+                  <path d="M 60 20 L 56 48 L 50 65" stroke="#92400e" strokeWidth="1.2" />
+                  <line x1="58" y1="36" x2="65" y2="36" stroke="#0b162c" strokeWidth="1.2" />
+                  <circle cx="32" cy="30" r="2" fill="#0b162c" />
+                  <circle cx="68" cy="30" r="2" fill="#0b162c" />
                 </svg>
 
-                <div className="absolute bottom-3 text-xs sm:text-sm text-neutral-600 font-semibold tracking-wide">
+                <div className="absolute bottom-3 text-xs sm:text-sm text-[#0b162c] font-bold tracking-wide">
                   {height} cm • {weight} kg • {bodyType.toUpperCase()}
                 </div>
               </div>
             </div>
 
             {/* Sliders and controls */}
-            <div className="space-y-4">
+            <div className="space-y-4 font-serif">
               {/* Height slider */}
-              <div className="bg-neutral-50/90 p-5 rounded-3xl border border-black/[0.04]">
+              <div className="bg-[#f4ebd9] p-5 rounded-3xl border border-amber-600/20">
                 <div className="flex justify-between text-sm font-semibold text-neutral-700 mb-2.5">
                   <span>Height</span>
-                  <span className="text-neutral-900 font-bold">{height} cm ({Math.floor(height/30.48)}&apos;{Math.round((height%30.48)/2.54)}&quot;)</span>
+                  <span className="text-[#0b162c] font-bold">{height} cm ({Math.floor(height/30.48)}&apos;{Math.round((height%30.48)/2.54)}&quot;)</span>
                 </div>
                 <input
                   type="range"
@@ -162,15 +162,15 @@ export const BiometricFitScanner: React.FC<BiometricFitScannerProps> = ({ isOpen
                   max="195"
                   value={height}
                   onChange={(e) => setHeight(parseInt(e.target.value))}
-                  className="w-full accent-neutral-900 cursor-pointer h-2 bg-neutral-200 rounded-lg"
+                  className="w-full accent-amber-600 cursor-pointer h-2 bg-[#dfd5c2] rounded-lg"
                 />
               </div>
 
               {/* Weight slider */}
-              <div className="bg-neutral-50/90 p-5 rounded-3xl border border-black/[0.04]">
+              <div className="bg-[#f4ebd9] p-5 rounded-3xl border border-amber-600/20">
                 <div className="flex justify-between text-sm font-semibold text-neutral-700 mb-2.5">
                   <span>Weight</span>
-                  <span className="text-neutral-900 font-bold">{weight} kg</span>
+                  <span className="text-[#0b162c] font-bold">{weight} kg</span>
                 </div>
                 <input
                   type="range"
@@ -178,13 +178,13 @@ export const BiometricFitScanner: React.FC<BiometricFitScannerProps> = ({ isOpen
                   max="105"
                   value={weight}
                   onChange={(e) => setWeight(parseInt(e.target.value))}
-                  className="w-full accent-neutral-900 cursor-pointer h-2 bg-neutral-200 rounded-lg"
+                  className="w-full accent-amber-600 cursor-pointer h-2 bg-[#dfd5c2] rounded-lg"
                 />
               </div>
 
               {/* Body Frame */}
               <div>
-                <span className="text-xs font-bold text-neutral-500 uppercase tracking-wider block mb-2">Body Build:</span>
+                <span className="text-xs font-bold text-amber-800 uppercase tracking-wider block mb-2">Body Build:</span>
                 <div className="grid grid-cols-4 gap-2.5">
                   {(['slim', 'athletic', 'regular', 'broad'] as const).map((b) => (
                     <button
@@ -196,8 +196,8 @@ export const BiometricFitScanner: React.FC<BiometricFitScannerProps> = ({ isOpen
                       }}
                       className={`py-3 px-3 rounded-2xl capitalize text-xs sm:text-sm font-semibold cursor-pointer transition-all ${
                         bodyType === b
-                          ? 'bg-neutral-900 text-white shadow-xs'
-                          : 'bg-neutral-100 text-neutral-700 hover:bg-neutral-200/80'
+                          ? 'bg-[#0b162c] text-white shadow-sm border border-amber-500/40'
+                          : 'bg-[#fdf9f0] text-[#0b162c] border border-amber-600/20 hover:bg-[#f2ebd8]'
                       }`}
                     >
                       {b}
@@ -208,11 +208,11 @@ export const BiometricFitScanner: React.FC<BiometricFitScannerProps> = ({ isOpen
 
               {/* Occasion */}
               <div>
-                <span className="text-xs font-bold text-neutral-500 uppercase tracking-wider block mb-2">Occasion:</span>
+                <span className="text-xs font-bold text-amber-800 uppercase tracking-wider block mb-2">Occasion:</span>
                 <select
                   value={occasion}
                   onChange={(e) => setOccasion(e.target.value)}
-                  className="w-full bg-neutral-50/90 border border-black/[0.08] rounded-2xl px-4 py-3.5 text-neutral-900 font-medium text-sm focus:ring-2 focus:ring-neutral-900/10 outline-none cursor-pointer"
+                  className="w-full bg-[#f4ebd9] border border-amber-600/20 rounded-2xl px-4 py-3.5 text-[#0b162c] font-medium text-sm focus:ring-2 focus:ring-amber-500/20 outline-none cursor-pointer"
                 >
                   <option>Placement Panel Interview</option>
                   <option>Farewell / Graduation Gala</option>
@@ -228,13 +228,13 @@ export const BiometricFitScanner: React.FC<BiometricFitScannerProps> = ({ isOpen
               <button
                 onClick={handleRunScan}
                 disabled={isScanning}
-                className="w-full py-4 rounded-full bg-neutral-900 text-white font-bold text-sm sm:text-base hover:bg-black transition-all cursor-pointer shadow-sm flex items-center justify-center gap-2.5 active:scale-95"
+                className="w-full py-4 rounded-full bg-[#0b162c] hover:bg-[#122449] text-white font-bold text-sm sm:text-base transition-all cursor-pointer shadow-md flex items-center justify-center gap-2.5 active:scale-95 border border-amber-500/40 font-serif"
               >
                 {isScanning ? (
-                  <span>Analyzing Biometric Dimensions...</span>
+                  <span className="text-amber-300">Analyzing Dimensions...</span>
                 ) : (
                   <>
-                    <Sparkles className="w-5 h-5" />
+                    <Sparkles className="w-5 h-5 text-amber-400" />
                     <span>Calculate Recommended Size</span>
                   </>
                 )}
@@ -246,36 +246,36 @@ export const BiometricFitScanner: React.FC<BiometricFitScannerProps> = ({ isOpen
               <motion.div
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="bg-neutral-50/90 border border-black/[0.06] rounded-3xl p-6 space-y-5 shadow-xs"
+                className="bg-[#f4ebd9] border border-amber-600/20 rounded-3xl p-6 space-y-5 shadow-sm font-serif"
               >
-                <div className="flex items-center justify-between pb-3.5 border-b border-black/[0.04]">
+                <div className="flex items-center justify-between pb-3.5 border-b border-amber-600/15">
                   <div className="flex items-center gap-2.5">
-                    <CheckCircle2 className="w-5 h-5 text-emerald-600" />
-                    <span className="text-base font-bold text-neutral-900">
+                    <CheckCircle2 className="w-5 h-5 text-emerald-700" />
+                    <span className="text-base font-bold text-[#0b162c]">
                       Recommendation Ready
                     </span>
                   </div>
-                  <span className="text-emerald-800 bg-emerald-100 px-3 py-1 rounded-full text-xs font-bold">
+                  <span className="text-emerald-900 bg-emerald-100 border border-emerald-300 px-3 py-1 rounded-full text-xs font-bold">
                     {scanResult.confidence}% confidence match
                   </span>
                 </div>
 
                 <div className="grid grid-cols-3 gap-3 text-center">
-                  <div className="p-4 rounded-2xl bg-white border border-black/[0.04]">
+                  <div className="p-4 rounded-2xl bg-[#fdf9f0] border border-amber-600/20">
                     <span className="text-xs text-neutral-500 font-medium block">Primary Size</span>
-                    <span className="text-2xl font-extrabold text-neutral-900 block mt-1">Size {scanResult.primarySize}</span>
+                    <span className="text-2xl font-extrabold text-[#0b162c] block mt-1">Size {scanResult.primarySize}</span>
                   </div>
-                  <div className="p-4 rounded-2xl bg-white border border-black/[0.04]">
+                  <div className="p-4 rounded-2xl bg-[#fdf9f0] border border-amber-600/20">
                     <span className="text-xs text-neutral-500 font-medium block">Est. Chest</span>
-                    <span className="text-2xl font-extrabold text-neutral-900 block mt-1">{scanResult.chestInches}&quot;</span>
+                    <span className="text-2xl font-extrabold text-[#0b162c] block mt-1">{scanResult.chestInches}&quot;</span>
                   </div>
-                  <div className="p-4 rounded-2xl bg-white border border-black/[0.04]">
+                  <div className="p-4 rounded-2xl bg-[#fdf9f0] border border-amber-600/20">
                     <span className="text-xs text-neutral-500 font-medium block">3-Size Pack</span>
-                    <span className="text-sm font-bold text-neutral-900 block mt-2">{scanResult.threeSizes.join(', ')}</span>
+                    <span className="text-sm font-bold text-[#0b162c] block mt-2">{scanResult.threeSizes.join(', ')}</span>
                   </div>
                 </div>
 
-                <p className="text-sm text-neutral-600 leading-relaxed bg-white p-4 rounded-2xl border border-black/[0.04]">
+                <p className="text-sm text-neutral-700 leading-relaxed bg-[#fdf9f0] p-4 rounded-2xl border border-amber-600/20">
                   {scanResult.fitNotes}
                 </p>
 
@@ -286,9 +286,9 @@ export const BiometricFitScanner: React.FC<BiometricFitScannerProps> = ({ isOpen
                       onApplySize(scanResult.primarySize);
                       onClose();
                     }}
-                    className="flex-1 py-4 rounded-full bg-neutral-900 text-white font-bold text-sm sm:text-base hover:bg-black transition-all cursor-pointer flex items-center justify-center gap-2 shadow-sm active:scale-95"
+                    className="flex-1 py-4 rounded-full bg-[#0b162c] hover:bg-[#122449] text-white font-bold text-sm sm:text-base transition-all cursor-pointer flex items-center justify-center gap-2 shadow-md active:scale-95 border border-amber-500/40"
                   >
-                    <Check className="w-5 h-5" />
+                    <Check className="w-5 h-5 text-amber-400" />
                     <span>Apply Size {scanResult.primarySize}</span>
                   </button>
 
@@ -297,7 +297,7 @@ export const BiometricFitScanner: React.FC<BiometricFitScannerProps> = ({ isOpen
                       sound.playBeep(500);
                       setScanResult(null);
                     }}
-                    className="px-6 py-4 rounded-full bg-neutral-100 hover:bg-neutral-200/80 text-neutral-700 text-sm font-semibold cursor-pointer transition-colors"
+                    className="px-6 py-4 rounded-full bg-[#fdf9f0] hover:bg-[#f2ebd8] text-[#0b162c] border border-amber-600/20 text-sm font-semibold cursor-pointer transition-colors"
                   >
                     Adjust
                   </button>
