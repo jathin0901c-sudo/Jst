@@ -41,7 +41,7 @@ export const BootAnimation: React.FC<BootAnimationProps> = ({ onComplete }) => {
           {/* Luxury Royal Seal Imprint */}
           <div className="w-28 h-28 rounded-full bg-white border-2 border-amber-600/30 ring-4 ring-amber-500/20 luxury-seal-imprint flex items-center justify-center mb-5 p-1 overflow-hidden">
             <img
-              src="/blazer_bank_emblem.jpg"
+              src="/blazer_bank_logo.svg"
               alt="Blazer Bank"
               className="w-full h-full object-contain rounded-full"
               referrerPolicy="no-referrer"

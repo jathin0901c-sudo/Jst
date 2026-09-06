@@ -65,7 +65,16 @@ export const Navbar: React.FC<NavbarProps> = ({
             <span className="hidden md:inline text-neutral-400">({selectedCampus.runnerStation})</span>
           </div>
 
-          <div className="flex items-center gap-4 shrink-0 text-xs sm:text-sm">
+          <div className="flex items-center gap-3.5 shrink-0 text-xs sm:text-sm">
+            <a
+              href="https://wa.me/917093545955?text=Hi%20Blazer%20Bank%2C%20I%20need%20help%20with%20a%20blazer%20rental"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden lg:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 hover:bg-emerald-100/80 text-emerald-800 border border-emerald-200/70 transition-colors font-medium cursor-pointer"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              <span>Support WhatsApp: <strong>7093545955</strong></span>
+            </a>
             <span className="hidden sm:flex items-center gap-1.5 text-neutral-600">
               <Clock className="w-3.5 h-3.5 text-neutral-500" />
               <span>2h Express Doorstep Delivery Available</span>
@@ -89,7 +98,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             {/* Enhanced Imprinted Medallion Logo */}
             <div className="w-12 h-12 rounded-full bg-white border border-amber-600/30 ring-2 ring-amber-500/20 luxury-seal-imprint p-0.5 flex items-center justify-center group-hover:scale-105 transition-all overflow-hidden shrink-0">
               <img
-                src="/blazer_bank_emblem.jpg"
+                src="/blazer_bank_logo.svg"
                 alt="Blazer Bank Seal"
                 className="w-full h-full object-contain rounded-full"
                 referrerPolicy="no-referrer"

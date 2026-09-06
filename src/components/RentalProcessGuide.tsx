@@ -139,7 +139,7 @@ export const RentalProcessGuide: React.FC<RentalProcessGuideProps> = ({
           <div className="flex items-center gap-3 mb-3">
             <div className="w-10 h-10 rounded-full bg-white border border-amber-600/30 ring-2 ring-amber-500/20 luxury-seal-imprint p-0.5 flex items-center justify-center shrink-0 shadow-xs">
               <img
-                src="/blazer_bank_emblem.jpg"
+                src="/blazer_bank_logo.svg"
                 alt="Blazer Bank Seal"
                 className="w-full h-full object-contain rounded-full"
                 referrerPolicy="no-referrer"

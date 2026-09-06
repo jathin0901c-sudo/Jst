@@ -57,7 +57,7 @@ export const OrderSuccessModal: React.FC<OrderSuccessModalProps> = ({ order, onC
             <div className="flex items-center justify-center gap-3 mb-4">
               <div className="w-14 h-14 rounded-full bg-white border border-amber-600/30 ring-2 ring-amber-500/20 luxury-seal-imprint p-0.5 flex items-center justify-center shrink-0">
                 <img
-                  src="/blazer_bank_emblem.jpg"
+                  src="/blazer_bank_logo.svg"
                   alt="Blazer Bank Seal"
                   className="w-full h-full object-contain rounded-full"
                   referrerPolicy="no-referrer"
