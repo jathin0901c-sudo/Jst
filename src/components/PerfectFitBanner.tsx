@@ -25,18 +25,28 @@ export const PerfectFitBanner: React.FC<PerfectFitBannerProps> = ({ onOpenScanne
       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
         {/* Main message */}
         <div className="max-w-2xl">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 text-blue-700 text-xs sm:text-sm font-semibold mb-3">
-            <Sparkles className="w-4 h-4 text-blue-600" />
-            <span>Included Free With Every Rental</span>
+          <div className="flex items-center gap-3 mb-3">
+            <div className="w-9 h-9 rounded-full bg-white border border-amber-600/30 ring-2 ring-amber-500/20 luxury-seal-imprint p-0.5 flex items-center justify-center shrink-0 shadow-xs">
+              <img
+                src="/blazer_bank_emblem.jpg"
+                alt="Blazer Bank Seal"
+                className="w-full h-full object-contain rounded-full"
+                referrerPolicy="no-referrer"
+              />
+            </div>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-50/80 border border-amber-200/80 text-amber-950 text-xs sm:text-sm font-semibold">
+              <Sparkles className="w-4 h-4 text-amber-700" />
+              <span>Official Blazer Bank Guarantee • Included Free With Every Rental</span>
+            </div>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl font-bold text-neutral-900 tracking-tight leading-tight mb-3">
+          <h2 className="text-3xl sm:text-4xl font-bold text-neutral-950 tracking-tight leading-tight mb-3 font-serif">
             The 3-Size Fit Guarantee. <br className="hidden sm:inline" />
             <span className="text-neutral-500 font-normal">Delivered together, zero fitting panic.</span>
           </h2>
 
-          <p className="text-base text-neutral-600 leading-relaxed mb-5">
-            Never stress about wrong sizing on interview morning. When you reserve a size, we automatically pack <strong className="text-neutral-900 font-semibold">Selected + 1 Size Smaller + 1 Size Larger</strong> in a sealed wardrobe bag. Try them on in your hostel room, keep the sharpest fit, and hand back the rest to our runner.
+          <p className="text-base text-neutral-700 leading-relaxed mb-5 font-serif">
+            Never stress about wrong sizing on interview morning. When you reserve a size, we automatically pack <strong className="text-neutral-950 font-semibold">Selected + 1 Size Smaller + 1 Size Larger</strong> in a sealed wardrobe bag. Try them on in your hostel room, keep the sharpest fit, and hand back the rest to our runner.
           </p>
 
           <div className="flex flex-wrap items-center gap-4">
@@ -113,7 +123,7 @@ export const PerfectFitBanner: React.FC<PerfectFitBannerProps> = ({ onOpenScanne
 
           <div className="flex items-center justify-center gap-2 text-xs sm:text-sm font-medium text-neutral-600 bg-white border border-black/[0.04] rounded-2xl py-2.5 px-4">
             <Check className="w-4 h-4 text-emerald-600" />
-            <span>Zero deposit • Hand back unworn sizes</span>
+            <span>₹199 deducted on return • Remainder sent back to your UPI</span>
           </div>
         </div>
       </div>

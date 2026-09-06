@@ -97,12 +97,12 @@ export const SavingsCalculator: React.FC = () => {
             </p>
           </div>
 
-          {/* Stark Rental */}
+          {/* Blazer Bank Rental */}
           <div className="p-7 sm:p-8 rounded-3xl bg-neutral-900 text-white shadow-sm flex flex-col justify-between space-y-4">
             <div>
               <div className="flex items-center justify-between mb-2">
                 <span className="text-xs font-semibold text-neutral-400 uppercase tracking-wider">
-                  Renting on Stark
+                  Renting on Blazer Bank
                 </span>
                 <span className="text-xs font-bold bg-white/15 text-white px-3 py-1 rounded-full">
                   Zero Maintenance

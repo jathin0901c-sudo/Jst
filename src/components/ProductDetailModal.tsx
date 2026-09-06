@@ -80,10 +80,18 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
           {/* Header */}
           <div className="p-6 sm:p-7 border-b border-neutral-100 flex items-center justify-between shrink-0 bg-white">
             <div className="flex items-center gap-3">
-              <span className="px-4 py-1.5 rounded-full bg-neutral-100 text-neutral-800 text-xs sm:text-sm font-semibold">
+              <div className="w-9 h-9 rounded-full bg-white border border-amber-600/30 ring-2 ring-amber-500/20 luxury-seal-imprint p-0.5 flex items-center justify-center shrink-0">
+                <img
+                  src="/blazer_bank_emblem.jpg"
+                  alt="Blazer Bank Seal"
+                  className="w-full h-full object-contain rounded-full"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+              <span className="px-4 py-1.5 rounded-full bg-neutral-100 text-neutral-800 text-xs sm:text-sm font-semibold font-serif">
                 {product.brand}
               </span>
-              <span className="text-neutral-500 text-xs sm:text-sm font-medium uppercase tracking-wider">
+              <span className="text-neutral-500 text-xs sm:text-sm font-medium uppercase tracking-wider font-serif">
                 {product.category}
               </span>
             </div>
@@ -326,12 +334,12 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                   <div className="p-4 rounded-2xl bg-neutral-100/80 border border-black/[0.04] space-y-2">
                     <div className="flex items-center justify-between text-xs text-neutral-500 font-semibold uppercase tracking-wider">
                       <span>How Rental Works</span>
-                      <span className="text-emerald-700 font-bold">Zero Security Deposit</span>
+                      <span className="text-amber-800 font-bold">Pre-Damage Deposit: ₹1,500</span>
                     </div>
                     <div className="grid grid-cols-4 gap-1.5 text-center text-[11px] pt-1">
                       <div className="p-2 rounded-xl bg-white border border-black/[0.04]">
                         <span className="block font-bold text-neutral-900">1. Order</span>
-                        <span className="text-neutral-500 text-[10px] block">No Deposit</span>
+                        <span className="text-neutral-500 text-[10px] block">Deposit Held</span>
                       </div>
                       <div className="p-2 rounded-xl bg-white border border-black/[0.04]">
                         <span className="block font-bold text-neutral-900">2. 3 Sizes</span>
@@ -342,9 +350,12 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                         <span className="text-neutral-500 text-[10px] block">Ace Event</span>
                       </div>
                       <div className="p-2 rounded-xl bg-white border border-black/[0.04]">
-                        <span className="block font-bold text-neutral-900">4. Return</span>
-                        <span className="text-emerald-700 text-[10px] font-bold block">No Wash!</span>
+                        <span className="block font-bold text-neutral-900">4. Refund</span>
+                        <span className="text-emerald-700 text-[10px] font-bold block">₹1,301 Back</span>
                       </div>
+                    </div>
+                    <div className="text-[11px] text-neutral-500 pt-1 leading-snug">
+                      *Agent confirms no damage at gate, we deduct ₹199 and send back remaining to your UPI.
                     </div>
                   </div>
                 )}
@@ -355,14 +366,14 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
           {/* Footer Action Bar */}
           <div className="bg-neutral-50/80 border-t border-neutral-100 p-5 sm:p-6 flex items-center justify-between shrink-0">
             <div>
-              <span className="text-xs text-neutral-500 block font-medium uppercase tracking-wider">Total:</span>
+              <span className="text-xs text-neutral-500 block font-medium uppercase tracking-wider">Rental Fee:</span>
               <div className="flex items-baseline gap-2.5">
                 <span className="text-3xl font-extrabold tracking-tight text-neutral-900">
                   ₹{totalPrice}
                 </span>
                 {isRental && (
-                  <span className="text-xs sm:text-sm text-emerald-700 font-semibold">
-                    (₹0 Deposit • 3 Sizes Included)
+                  <span className="text-xs sm:text-sm text-neutral-500 font-medium">
+                    (₹199 net rental • 3 sizes included)
                   </span>
                 )}
               </div>

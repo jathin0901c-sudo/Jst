@@ -34,18 +34,18 @@ export const RentalProcessGuide: React.FC<RentalProcessGuideProps> = ({
   const steps = [
     {
       step: 1,
-      shortTitle: 'Pick & Reserve',
-      title: 'Choose Your Allen Solly Style & Dates',
-      tagline: 'Zero Security Deposit with College Student ID',
-      badge: 'Step 1 • Selection',
+      shortTitle: 'Pick & Deposit',
+      title: 'Choose Branded Blazer & Book Upfront Deposit',
+      tagline: 'Authentic Branded Wear • ₹1,500 - ₹2,000 Pre-Damage Deposit',
+      badge: 'Step 1 • Selection & Deposit',
       icon: Package,
       time: 'Takes 2 Minutes',
-      summary: 'Pick from Allen Solly tailored blazers (@ ₹199/day), woven silk ties (@ ₹39/day), or 2-piece combos (@ ₹209/day).',
+      summary: 'Pick from 100% authentic branded blazers (Allen Solly, Raymond, Van Heusen). As all blazers are high-value branded garments, we take an initial ₹1,500 - ₹2,000 Pre-Damage Prevention Deposit at booking.',
       details: [
-        'Select your formalwear: Blazers, Ties, or 2-Piece matching combos.',
+        'Select your branded formalwear: Blazers (@ ₹199/day) or 2-Piece matching combos (@ ₹209/day).',
         'Choose your rental duration (1 day for interview, 2 days for weekend galas, or custom dates).',
-        'Zero security deposit needed: simply upload/show your college student roll card upon delivery.',
-        '2-Hour Express Gate Drop is 100% FREE! Need it in 30 minutes? Flash priority express is available for +₹49.'
+        'Pre Damage Prevention Deposit: ₹1,500 (single blazer) or ₹2,000 (combo) is taken upfront to protect authentic designer apparel.',
+        '2-Hour Express Gate Drop is 100% FREE! (or upgrade to 30-min flash courier for +₹49).'
       ],
       tip: 'Pro-tip: Unsure about your chest size? You can use our Biometric Fit Scanner or guess approximate size—we deliver 3 sizes anyway!'
     },
@@ -81,49 +81,49 @@ export const RentalProcessGuide: React.FC<RentalProcessGuideProps> = ({
         'Try all 3 sizes in privacy. Pick the best fit; leave the other 2 in the return pocket.',
         'Pristine presentation: crisp lapels, non-wrinkle finish, and hospital-grade sanitization.',
         'Wear it for campus placements, Bain/McKinsey consulting case interviews, civil services mocks, or college farewells.',
-        'Minor accidental creases or transit dust are 100% covered by our Student Shield policy.'
+        'Normal transit creases, lint, and wear wrinkles are 100% covered. We dry clean anyway!'
       ],
       tip: 'You look sharp without sinking ₹10,000+ into an expensive showroom suit you might only wear once a year.'
     },
     {
       step: 4,
-      shortTitle: 'Hassle-Free Return',
-      title: 'Hand Back at Hostel Gate • Zero Washing Required',
-      tagline: 'No Dry Cleaning, No Ironing, No Laundry Hassle for You',
-      badge: 'Step 4 • Easy Pickup',
+      shortTitle: 'Inspection & Refund',
+      title: 'Gate Return: Agent Confirms Zero Damage → We Deduct ₹199 & Send Remaining!',
+      tagline: 'Instant UPI Refund • No Laundry Or Washing Required By You',
+      badge: 'Step 4 • Return & Settlement',
       icon: RotateCcw,
       time: 'Scheduled Pickup',
-      summary: 'Simply place all 3 garments back into the reusable Stark Formals zip bag. Our runner collects it right from your hostel gate.',
+      summary: 'Simply hand the bag back to our runner at your hostel gate. Once our agent confirms no damage is done to the branded product, we deduct ₹199 and immediately send back the remaining balance to your UPI!',
       details: [
-        'CRITICAL RULE: Do NOT wash, iron, or dry-clean the suit yourself! We take care of everything.',
-        'Place everything back into the waterproof Stark Formals zip bag provided.',
-        'Our runner pings your WhatsApp and collects the package directly at your campus hostel reception/gate.',
-        'We route the garments directly into our SterileClean tri-phase organic dry cleaning process.'
+        'Our campus runner meets you at your hostel gate at your scheduled return slot.',
+        '60-Second Agent Verification: Our agent quickly inspects the blazer for zero structural damage (no cuts, burns, or fabric tears).',
+        'Transparent Settlement: Once confirmed damage-free, we deduct ₹199 (daily rental) and immediately send back the remaining amount (e.g. ₹1,500 - ₹199 = ₹1,301) straight to your UPI/bank account.',
+        'CRITICAL RULE: Do NOT wash, iron, or dry-clean the suit yourself! Blazer Bank handles 100% of the dry cleaning.'
       ],
-      tip: 'Returning is as simple as handing back a delivery parcel. Takes 30 seconds!'
+      tip: 'Returning is as simple as handing back a delivery parcel. You get your money back within minutes!'
     }
   ];
 
   const faqs = [
     {
+      q: 'How does the Pre-Damage Prevention Deposit work?',
+      a: 'Because all blazers at Blazer Bank are authentic, high-value branded formalwear (Allen Solly, Raymond, Van Heusen, Louis Philippe retailing at ₹8,000–₹14,000), we collect an initial Pre-Damage Prevention Deposit of ₹1,500 (single blazers) or ₹2,000 (2-piece combos) at booking. When you return the suit at your hostel gate, our agent performs a quick 60-second check. If our agent confirms no damage is done to the product, we deduct the ₹199 daily rental fee and send back the entire remaining amount (e.g., ₹1,500 - ₹199 = ₹1,301 refund; or ₹2,000 - ₹199 = ₹1,801 refund) instantly to your UPI or bank account!'
+    },
+    {
+      q: 'What counts as "damage"? Will I lose my deposit for wrinkles or sweat?',
+      a: 'Absolutely NOT! Normal wear wrinkles, hanger folds, and sweat are 100% covered. In fact, every single blazer goes through our ₹150 tri-phase dry clean facility before it is ever rented again, so sanitization and cleaning are on us. The Pre-Damage Prevention Deposit only protects against catastrophic structural damage, such as intentional fabric shears, cigarette burns, or permanent ink soaking.'
+    },
+    {
       q: 'Do I have to wash or dry-clean the formal wear before returning?',
-      a: 'No, absolutely not! In fact, please do not wash or iron the suit. Stark Formals handles 100% of the professional dry cleaning and sanitization. Each returned garment is sent to our certified laboratory facility for a ₹150 hospital-grade tri-phase dry wash, steam press, and bacterial inspection before it can ever be rented again.'
+      a: 'No, absolutely not! In fact, please do not wash or iron the suit with hostel equipment. Blazer Bank handles 100% of the professional dry cleaning and sanitization. Each returned garment is sent to our certified facility for a ₹150 hospital-grade tri-phase dry wash, steam press, and bacterial inspection before it can ever be rented again.'
     },
     {
       q: 'How does the "3-Size Fit Guarantee" work? Is it really free?',
       a: 'Yes, it is completely free with every blazer or combo rental! When you reserve your size (e.g. Size 40), our dispatch system automatically packs three garments: your selected size (40), one size down (38), and one size up (42) in a single luxury multi-hanger garment bag. You try all three in your room, wear the one that fits perfectly, and keep all three in the bag for our runner to collect upon return.'
     },
     {
-      q: 'Is there any security deposit required?',
-      a: 'Zero rupees! We understand that college students cannot afford having ₹5,000 to ₹10,000 blocked on credit cards. Instead of financial deposits, we use campus verification: simply provide your College Roll Number and show your student ID card to our runner.'
-    },
-    {
       q: 'How fast can I get a suit for an emergency interview tomorrow morning?',
       a: 'Our standard 2-Hour Express Gate Drop is 100% FREE! Hyperlocal campus runners station at key perimeters (e.g., Hauz Khas for IIT Delhi, Bawana for DTU, Dwarka for NSUT, Vishwavidyalaya for DU, and Rohtak Gate 2) and drop your 3-size package directly at your hostel gate within 2 hours at zero extra charge. If you have an urgent short-notice interview and want it in 30 minutes, you can choose 30-Minute Flash Express delivery for a small extra charge (+₹49).'
-    },
-    {
-      q: 'What happens if I accidentally spill water, tea, or food on the suit?',
-      a: 'Don’t panic! College events happen. All rentals include our Student Shield protection, which covers standard minor food spots, coffee splashes, transit wrinkles, and accidental light dust. As long as the garment is not intentionally torn or burned, you will not be charged extra.'
     },
     {
       q: 'Can I extend my rental if my placement interviews continue for another day?',
@@ -136,16 +136,26 @@ export const RentalProcessGuide: React.FC<RentalProcessGuideProps> = ({
       {/* Section Header */}
       <div className="flex flex-col lg:flex-row lg:items-end justify-between pb-8 border-b border-neutral-100 gap-6">
         <div className="max-w-2xl">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-neutral-100 text-neutral-800 text-xs sm:text-sm font-semibold mb-3 border border-black/[0.04]">
-            <HelpCircle className="w-4 h-4 text-neutral-600" />
-            <span>Rental Process Explained</span>
+          <div className="flex items-center gap-3 mb-3">
+            <div className="w-10 h-10 rounded-full bg-white border border-amber-600/30 ring-2 ring-amber-500/20 luxury-seal-imprint p-0.5 flex items-center justify-center shrink-0 shadow-xs">
+              <img
+                src="/blazer_bank_emblem.jpg"
+                alt="Blazer Bank Seal"
+                className="w-full h-full object-contain rounded-full"
+                referrerPolicy="no-referrer"
+              />
+            </div>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-50/80 border border-amber-200/80 text-amber-950 text-xs sm:text-sm font-semibold">
+              <HelpCircle className="w-4 h-4 text-amber-700" />
+              <span>Official Blazer Bank Process & Guarantee</span>
+            </div>
           </div>
 
-          <h2 className="text-2xl sm:text-4xl font-bold text-neutral-900 tracking-tight leading-tight">
-            How Renting Works at Stark Formals
+          <h2 className="text-2xl sm:text-4xl font-bold text-neutral-950 tracking-tight leading-tight font-serif">
+            How Renting Works at Blazer Bank
           </h2>
-          <p className="text-neutral-600 text-base sm:text-lg mt-2 leading-relaxed">
-            From emergency interview shortlists to gala evenings: how Delhi NCR & Rohtak students get tailored Allen Solly suits delivered in 2 hours with zero stress.
+          <p className="text-neutral-600 text-base sm:text-lg mt-2 leading-relaxed font-serif">
+            From emergency interview shortlists to gala evenings: how Delhi NCR & Rohtak students get authentic branded suits delivered in 2 hours with transparent deposit settlement.
           </p>
         </div>
 
@@ -333,12 +343,12 @@ export const RentalProcessGuide: React.FC<RentalProcessGuideProps> = ({
                         </div>
                         <div className="text-neutral-500 text-xs">Streamlined formal styling ready for campus placements.</div>
                       </div>
-                      <div className="p-3.5 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-800 space-y-1">
-                        <div className="font-bold flex items-center gap-1.5">
-                          <GraduationCap className="w-4 h-4 text-emerald-600" />
-                          <span>Zero Deposit Guarantee</span>
+                      <div className="p-3.5 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-900 space-y-1">
+                        <div className="font-bold flex items-center gap-1.5 text-amber-950">
+                          <ShieldCheck className="w-4 h-4 text-amber-600" />
+                          <span>Pre Damage Prevention Deposit</span>
                         </div>
-                        <div className="text-xs text-emerald-700">No ₹5,000 credit card locks. Verified via your Student Roll No.</div>
+                        <div className="text-xs text-amber-900">₹1,500 – ₹2,000 upfront. We deduct ₹199 on return and instantly send back the remaining balance!</div>
                       </div>
                     </div>
                   )}
@@ -386,33 +396,37 @@ export const RentalProcessGuide: React.FC<RentalProcessGuideProps> = ({
                           <ShieldCheck className="w-4 h-4 text-amber-600" />
                           <span>Student Shield Included</span>
                         </div>
-                        <div>Minor accidental tea/coffee splashes or rain drops are 100% covered. Zero anxiety.</div>
+                        <div>Minor accidental transit wrinkles or lint are 100% covered. Zero anxiety.</div>
                       </div>
                     </div>
                   )}
 
                   {activeStep === 4 && (
                     <div className="space-y-3.5">
-                      <div className="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-900 space-y-2">
-                        <div className="text-xs font-bold uppercase text-emerald-700 tracking-wider">Zero Cleaning Checklist:</div>
-                        <ul className="text-xs space-y-1.5 text-emerald-800">
-                          <li className="flex items-center gap-2">
-                            <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                            <span>Do NOT wash or laundry the suit.</span>
-                          </li>
-                          <li className="flex items-center gap-2">
-                            <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                            <span>Do NOT press or iron with hostel iron.</span>
-                          </li>
-                          <li className="flex items-center gap-2">
-                            <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                            <span>Put back on hangers inside the zip bag.</span>
-                          </li>
-                        </ul>
+                      <div className="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-950 space-y-2.5">
+                        <div className="text-xs font-bold uppercase text-emerald-700 tracking-wider">Return & Instant Settlement:</div>
+                        <div className="p-2.5 rounded-xl bg-white border border-emerald-200 text-xs space-y-1">
+                          <div className="flex justify-between font-semibold text-neutral-900">
+                            <span>Pre-Damage Deposit Paid:</span>
+                            <span>₹1,500</span>
+                          </div>
+                          <div className="flex justify-between text-neutral-500">
+                            <span>Agent Verifies Zero Damage:</span>
+                            <span className="text-emerald-700 font-bold">✓ Approved</span>
+                          </div>
+                          <div className="flex justify-between text-neutral-700">
+                            <span>Deduct Daily Rental Fee:</span>
+                            <span className="text-neutral-900 font-semibold">-₹199</span>
+                          </div>
+                          <div className="pt-1.5 border-t border-emerald-100 flex justify-between font-bold text-emerald-800 text-sm">
+                            <span>Sent Back to Your UPI:</span>
+                            <span>₹1,301 Refund</span>
+                          </div>
+                        </div>
                       </div>
                       <div className="p-3 rounded-2xl bg-neutral-50 border border-black/[0.04] text-xs text-neutral-600">
                         <div className="font-semibold text-neutral-900 mb-1">Hostel Gate Handover</div>
-                        <div>Our runner contacts your phone when outside your hostel. Just hand over the bag. Done!</div>
+                        <div>Our runner contacts your phone when outside your hostel. 60-second inspection & instant refund. Done!</div>
                       </div>
                     </div>
                   )}
@@ -422,11 +436,98 @@ export const RentalProcessGuide: React.FC<RentalProcessGuideProps> = ({
           );
         })()}
 
-        {/* Traditional Buying vs Stark Formals Rental Comparison Table */}
+        {/* DEDICATED PRE DAMAGE PREVENTION DEPOSIT SECTOR */}
+        <div className="bg-gradient-to-br from-neutral-900 via-neutral-950 to-black text-white rounded-3xl p-6 sm:p-10 mb-10 shadow-lg border border-neutral-800">
+          <div className="max-w-3xl mb-8">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 text-xs font-bold mb-3 border border-amber-500/30">
+              <ShieldCheck className="w-4 h-4 text-amber-400" />
+              <span>Security & Deposit Transparency</span>
+            </div>
+            <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-white">
+              Pre Damage Prevention Deposit Sector
+            </h3>
+            <p className="text-neutral-300 text-sm sm:text-base mt-2 leading-relaxed">
+              Because every single blazer in Blazer Bank is an authentic, luxury branded garment (Allen Solly, Raymond, Van Heusen, Louis Philippe), we take <strong className="text-white">₹1,500 to ₹2,000</strong> at booking as a Pre Damage Prevention Deposit.
+            </p>
+          </div>
+
+          {/* 3-Step Deposit & Refund Mechanism Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+            <div className="p-5 rounded-2xl bg-white/5 border border-white/10 flex flex-col justify-between space-y-3">
+              <div>
+                <div className="w-8 h-8 rounded-lg bg-white/10 text-amber-300 flex items-center justify-center font-bold text-sm mb-3">
+                  1
+                </div>
+                <h4 className="font-bold text-white text-base">Upfront Deposit</h4>
+                <p className="text-xs text-neutral-300 mt-1 leading-relaxed">
+                  We take ₹1,500 for single blazers (or ₹2,000 for combos) at checkout. This protects genuine branded luxury suits from severe damage.
+                </p>
+              </div>
+              <div className="text-xs font-semibold text-amber-300/90 pt-2 border-t border-white/10">
+                ₹1,500 – ₹2,000 Pre-Held
+              </div>
+            </div>
+
+            <div className="p-5 rounded-2xl bg-white/5 border border-white/10 flex flex-col justify-between space-y-3">
+              <div>
+                <div className="w-8 h-8 rounded-lg bg-white/10 text-blue-300 flex items-center justify-center font-bold text-sm mb-3">
+                  2
+                </div>
+                <h4 className="font-bold text-white text-base">Agent Inspection</h4>
+                <p className="text-xs text-neutral-300 mt-1 leading-relaxed">
+                  When you hand back the bag to our runner at your hostel gate, our agent conducts a quick 60-second inspection to confirm zero structural damage.
+                </p>
+              </div>
+              <div className="text-xs font-semibold text-blue-300/90 pt-2 border-t border-white/10">
+                Verified at Hostel Gate
+              </div>
+            </div>
+
+            <div className="p-5 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex flex-col justify-between space-y-3">
+              <div>
+                <div className="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-sm mb-3">
+                  3
+                </div>
+                <h4 className="font-bold text-emerald-300 text-base">Deduct ₹199 & Refund Remainder</h4>
+                <p className="text-xs text-emerald-100 mt-1 leading-relaxed">
+                  If our agent confirms no damage is done to the product, we deduct ₹199 (daily rental fee) and send back the remaining balance immediately!
+                </p>
+              </div>
+              <div className="text-xs font-bold text-emerald-300 pt-2 border-t border-emerald-500/20">
+                ₹1,301 – ₹1,801 Instant UPI Refund
+              </div>
+            </div>
+          </div>
+
+          {/* Interactive Calculation Callout */}
+          <div className="p-5 sm:p-6 rounded-2xl bg-white/10 border border-white/15 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="space-y-1 text-center md:text-left">
+              <span className="text-xs text-neutral-400 font-semibold uppercase tracking-wider">Example Refund Calculation</span>
+              <div className="text-lg sm:text-xl font-bold text-white flex flex-wrap items-center justify-center md:justify-start gap-2">
+                <span>₹1,500 Deposit</span>
+                <span className="text-neutral-400">−</span>
+                <span className="text-amber-300">₹199 Rental Fee</span>
+                <span className="text-neutral-400">=</span>
+                <span className="text-emerald-400 font-extrabold text-xl sm:text-2xl">₹1,301 Refund Sent Back</span>
+              </div>
+            </div>
+
+            <div className="px-4 py-2.5 rounded-xl bg-emerald-500 text-white font-bold text-xs sm:text-sm shrink-0 flex items-center gap-2 shadow-sm">
+              <CheckCircle2 className="w-4 h-4" />
+              <span>Zero Damage Verified = Guaranteed Refund</span>
+            </div>
+          </div>
+
+          <p className="text-xs text-neutral-400 mt-4 text-center md:text-left">
+            *Note: Transit creases, folding marks, and normal wear are 100% on us! We dry clean each suit with hospital-grade sanitization anyway. You only need to safeguard against catastrophic physical cuts, tears, or burns.
+          </p>
+        </div>
+
+        {/* Traditional Buying vs Blazer Bank Rental Comparison Table */}
         <div className="bg-neutral-50/80 border border-black/[0.04] rounded-3xl p-6 sm:p-8 mb-10">
           <div className="text-center max-w-xl mx-auto mb-6">
             <h4 className="text-xl sm:text-2xl font-bold text-neutral-900 tracking-tight">
-              Why Students Prefer Stark Formals Over Buying
+              Why Students Prefer Blazer Bank Over Buying
             </h4>
             <p className="text-xs sm:text-sm text-neutral-500 mt-1">
               Clear breakdown of costs, logistics, and effort for college events.
@@ -439,7 +540,7 @@ export const RentalProcessGuide: React.FC<RentalProcessGuideProps> = ({
                 <tr className="border-b border-neutral-200 text-neutral-500">
                   <th className="pb-3 font-semibold">Aspect</th>
                   <th className="pb-3 font-semibold text-neutral-400">Traditional Showroom Buy</th>
-                  <th className="pb-3 font-bold text-neutral-900">Stark Formals Rental</th>
+                  <th className="pb-3 font-bold text-neutral-900">Blazer Bank Rental</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-neutral-200/60 text-neutral-700">

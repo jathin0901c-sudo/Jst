@@ -44,13 +44,18 @@ export const HowItWorksModal: React.FC<HowItWorksModalProps> = ({
         >
           {/* Modal Header */}
           <div className="flex items-center justify-between px-6 sm:px-8 py-4 border-b border-neutral-100 bg-neutral-50/80 shrink-0">
-            <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-xl bg-neutral-900 text-white flex items-center justify-center">
-                <HelpCircle className="w-4 h-4" />
+            <div className="flex items-center gap-3">
+              <div className="w-9 h-9 rounded-full bg-white border border-amber-600/30 ring-2 ring-amber-500/20 luxury-seal-imprint p-0.5 flex items-center justify-center shrink-0">
+                <img
+                  src="/blazer_bank_emblem.jpg"
+                  alt="Blazer Bank Seal"
+                  className="w-full h-full object-contain rounded-full"
+                  referrerPolicy="no-referrer"
+                />
               </div>
               <div>
-                <h3 className="text-base font-bold text-neutral-900">How Stark Formals Works</h3>
-                <p className="text-xs text-neutral-500">Step-by-step student rental & return walkthrough</p>
+                <h3 className="text-base sm:text-lg font-bold text-neutral-950 font-serif">How Blazer Bank Works</h3>
+                <p className="text-xs text-neutral-500 font-serif">Step-by-step student rental, deposit & return walkthrough</p>
               </div>
             </div>
 

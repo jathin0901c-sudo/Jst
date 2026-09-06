@@ -1,6 +1,8 @@
 {
-  "name": "STARK FORMALS",
-  "description": "Minimalist formal wear rental & retail for Delhi & Rohtak students with 3-size fit guarantee and 2-hour express delivery.",
+  "name": "Blazer Bank",
+  "description": "Minimalist branded formal wear rental & retail for Delhi & Rohtak students with 3-size fit guarantee, 2-hour express delivery, and transparent pre-damage prevention deposit.",
   "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }

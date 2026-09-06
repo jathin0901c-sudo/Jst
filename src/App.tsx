@@ -150,7 +150,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#f5f5f7] text-[#1d1d1f] font-sans relative selection:bg-neutral-900 selection:text-white">
+    <div className="min-h-screen bg-[#f7f7f8] text-[#1a1a1c] font-serif relative selection:bg-neutral-900 selection:text-white">
       {/* Boot Animation on First Load */}
       {showBoot && (
         <BootAnimation onComplete={() => setShowBoot(false)} />
@@ -281,16 +281,26 @@ export default function App() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-10 pb-10 border-b border-black/[0.06]">
             {/* Mission Statement */}
             <div className="space-y-3.5 md:col-span-2">
-              <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-2xl bg-neutral-900 text-white flex items-center justify-center font-extrabold text-sm shadow-sm">
-                  S
+              <div className="flex items-center gap-3.5">
+                <div className="w-12 h-12 rounded-full bg-white border border-amber-600/30 ring-2 ring-amber-500/20 luxury-seal-imprint p-0.5 flex items-center justify-center shadow-xs overflow-hidden shrink-0">
+                  <img
+                    src="/blazer_bank_emblem.jpg"
+                    alt="Blazer Bank"
+                    className="w-full h-full object-contain rounded-full"
+                    referrerPolicy="no-referrer"
+                  />
                 </div>
-                <span className="text-neutral-900 font-bold tracking-tight text-base">
-                  Stark Formals
-                </span>
+                <div>
+                  <span className="text-neutral-950 font-bold tracking-tight text-lg font-serif block">
+                    Blazer Bank
+                  </span>
+                  <span className="text-[10px] tracking-widest text-amber-900 font-semibold uppercase block font-serif">
+                    Formal Wear • Rental • Retail
+                  </span>
+                </div>
               </div>
-              <p className="text-neutral-600 text-sm leading-relaxed max-w-md">
-                Empowering college students across Delhi NCR & Rohtak for interviews, GD rounds, and farewells. Rent premium tailored suits @ ₹199/day, dry cleaned at ₹150 with lab proof, backed by our free 3-Size Fit Guarantee.
+              <p className="text-neutral-700 text-sm leading-relaxed max-w-md font-serif">
+                Empowering college students across Delhi NCR & Rohtak for interviews, GD rounds, and farewells. Rent authentic branded blazers @ ₹199/day, backed by our free 3-Size Fit Guarantee and transparent pre-damage prevention deposit refund.
               </p>
             </div>
 
@@ -314,13 +324,14 @@ export default function App() {
                 <li>• Free 3-size delivery guarantee</li>
                 <li>• 100% dry cleaned (₹150 bill proof)</li>
                 <li>• Free 2-Hour Express gate drop (30m rush available)</li>
+                <li>• Transparent deposit refund on zero-damage return</li>
               </ul>
             </div>
           </div>
 
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm text-neutral-500">
             <div>
-              © 2026 Stark Formals. Tailored for college students in Delhi & Rohtak.
+              © 2026 Blazer Bank. Branded formal wear for college students in Delhi & Rohtak.
             </div>
             <div className="flex items-center gap-5">
               <button

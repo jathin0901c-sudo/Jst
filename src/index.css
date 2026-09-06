@@ -1,21 +1,32 @@
 @import "tailwindcss";
 
+@theme {
+  --font-serif: "Times New Roman", Times, "Playfair Display", "Baskerville", Georgia, serif;
+  --font-sans: "Times New Roman", Times, "Playfair Display", "Baskerville", Georgia, serif;
+}
+
 @layer base {
-  body {
-    background-color: #f5f5f7;
-    color: #1d1d1f;
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Plus Jakarta Sans", system-ui, sans-serif;
+  html, body {
+    background-color: #f7f7f8;
+    color: #1a1a1c;
+    font-family: "Times New Roman", Times, "Playfair Display", "Baskerville", Georgia, serif;
     overflow-x: hidden;
-    letter-spacing: -0.01em;
+    letter-spacing: 0.005em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Plus Jakarta Sans", system-ui, sans-serif;
-    letter-spacing: -0.025em;
+    font-family: "Times New Roman", Times, "Playfair Display", "Baskerville", Georgia, serif;
+    letter-spacing: -0.015em;
+  }
+
+  p, span, a, button, input, select, textarea, label, li, th, td, blockquote {
+    font-family: "Times New Roman", Times, "Playfair Display", "Baskerville", Georgia, serif;
   }
 
   code, pre, .font-mono {
-    font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
   }
 }
 
@@ -40,7 +51,7 @@
 
 /* Apple subtle card elevation & material effects */
 .apple-glass {
-  background: rgba(255, 255, 255, 0.82);
+  background: rgba(255, 255, 255, 0.88);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
 }
@@ -56,3 +67,9 @@
 .apple-card:hover {
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.07);
 }
+
+/* Luxury imprint seal styling */
+.luxury-seal-imprint {
+  box-shadow: 0 4px 20px -2px rgba(180, 130, 50, 0.2), 0 0 0 1px rgba(190, 140, 60, 0.25), inset 0 1px 2px rgba(255, 255, 255, 0.9);
+}
+

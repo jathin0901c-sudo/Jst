@@ -75,6 +75,8 @@ export interface Order {
   expressDelivery: boolean;
   subtotal: number;
   expressCharge: number;
+  depositAmount?: number;
+  expectedRefund?: number;
   total: number;
   status: 'DISPATCHED_RADAR' | 'OUT_FOR_CAMPUS' | 'ARRIVED_HOSTEL_GATE' | 'DELIVERED';
   etaMinutes: number;

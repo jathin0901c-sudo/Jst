@@ -54,18 +54,28 @@ export const OrderSuccessModal: React.FC<OrderSuccessModalProps> = ({ order, onC
         >
           {/* Top Banner */}
           <div className="p-7 sm:p-8 text-center border-b border-neutral-100 bg-white relative shrink-0">
-            <div className="w-16 h-16 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center mx-auto mb-4">
-              <CheckCircle2 className="w-8 h-8 stroke-[2]" />
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <div className="w-14 h-14 rounded-full bg-white border border-amber-600/30 ring-2 ring-amber-500/20 luxury-seal-imprint p-0.5 flex items-center justify-center shrink-0">
+                <img
+                  src="/blazer_bank_emblem.jpg"
+                  alt="Blazer Bank Seal"
+                  className="w-full h-full object-contain rounded-full"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+              <div className="w-14 h-14 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center">
+                <CheckCircle2 className="w-7 h-7 stroke-[2]" />
+              </div>
             </div>
 
-            <span className="text-xs px-3 py-1 rounded-full bg-neutral-100 text-neutral-800 font-semibold">
-              Order {order.id} Confirmed
+            <span className="text-xs px-3 py-1 rounded-full bg-neutral-100 text-neutral-800 font-semibold font-serif">
+              Blazer Bank Dispatch • Order #{order.id}
             </span>
-            <h2 className="text-2xl sm:text-3xl font-bold text-neutral-900 tracking-tight mt-2.5">
-              Dispatched to Your Hostel
+            <h2 className="text-2xl sm:text-3xl font-bold text-neutral-950 tracking-tight mt-2.5 font-serif">
+              Dispatched to Your Hostel Gate
             </h2>
-            <p className="text-neutral-500 text-sm sm:text-base mt-1.5">
-              Estimated delivery: <strong className="text-neutral-900 font-bold">{order.etaMinutes} minutes</strong>
+            <p className="text-neutral-500 text-sm sm:text-base mt-1.5 font-serif">
+              Estimated campus arrival: <strong className="text-neutral-900 font-bold">{order.etaMinutes} minutes</strong>
             </p>
           </div>
 
@@ -128,11 +138,25 @@ export const OrderSuccessModal: React.FC<OrderSuccessModalProps> = ({ order, onC
                   </div>
                 ))}
               </div>
-              <div className="pt-3 border-t border-neutral-200/70 flex justify-between text-sm font-bold text-neutral-900">
-                <span>Total Paid / Payable:</span>
-                <span className="text-base font-extrabold text-neutral-900">
-                  ₹{order.total} ({order.paymentMethod})
-                </span>
+              <div className="pt-3 border-t border-neutral-200/70 space-y-1 text-sm">
+                {order.depositAmount && (
+                  <div className="flex justify-between text-amber-900 font-medium">
+                    <span>Pre-Damage Prevention Deposit:</span>
+                    <span>₹{order.depositAmount}</span>
+                  </div>
+                )}
+                <div className="flex justify-between font-bold text-neutral-900">
+                  <span>Total Amount ({order.paymentMethod}):</span>
+                  <span className="text-base font-extrabold text-neutral-900">
+                    ₹{order.total}
+                  </span>
+                </div>
+                {order.expectedRefund && (
+                  <div className="pt-1.5 text-xs text-emerald-800 font-semibold flex justify-between bg-emerald-50/80 p-2 rounded-xl">
+                    <span>Refund on Zero-Damage Return:</span>
+                    <span>₹{order.expectedRefund} (₹199 rental fee deducted)</span>
+                  </div>
+                )}
               </div>
             </div>
           </div>

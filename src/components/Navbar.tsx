@@ -84,32 +84,28 @@ export const Navbar: React.FC<NavbarProps> = ({
         <div className="flex items-center gap-4 sm:gap-6">
           <div 
             onClick={() => handleNavClick('rent')}
-            className="flex items-center gap-3 cursor-pointer group"
+            className="flex items-center gap-3.5 cursor-pointer group"
           >
-            <div className="w-10 h-10 rounded-2xl bg-neutral-900 text-white flex items-center justify-center shadow-sm group-hover:scale-105 transition-all">
-              <svg
-                className="w-5 h-5 text-white"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M20.38 3.46L16 2a4 4 0 01-8 0L3.62 3.46a2 2 0 00-1.34 2.23l.58 3.47a1 1 0 00.99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 002-2V10h2.15a1 1 0 00.99-.84l.58-3.47a2 2 0 00-1.34-2.23z" />
-              </svg>
+            {/* Enhanced Imprinted Medallion Logo */}
+            <div className="w-12 h-12 rounded-full bg-white border border-amber-600/30 ring-2 ring-amber-500/20 luxury-seal-imprint p-0.5 flex items-center justify-center group-hover:scale-105 transition-all overflow-hidden shrink-0">
+              <img
+                src="/blazer_bank_emblem.jpg"
+                alt="Blazer Bank Seal"
+                className="w-full h-full object-contain rounded-full"
+                referrerPolicy="no-referrer"
+              />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="text-lg sm:text-xl font-bold tracking-tight text-neutral-900">
-                  Stark Formals
+                <span className="text-xl sm:text-2xl font-bold tracking-tight text-neutral-950 font-serif">
+                  Blazer Bank
                 </span>
-                <span className="hidden md:inline-block text-xs px-2 py-0.5 rounded-md bg-neutral-100 text-neutral-600 font-medium">
+                <span className="hidden md:inline-block text-[10px] uppercase tracking-widest px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-900 font-bold border border-amber-300/80">
                   Delhi & Rohtak
                 </span>
               </div>
-              <p className="text-xs text-neutral-500 hidden sm:block">
-                Tailored Suits @ ₹199/Day
+              <p className="text-[10px] uppercase tracking-widest text-amber-900/90 font-semibold hidden sm:block">
+                Formal Wear • Rental • Retail
               </p>
             </div>
           </div>

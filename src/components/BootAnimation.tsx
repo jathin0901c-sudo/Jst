@@ -38,26 +38,24 @@ export const BootAnimation: React.FC<BootAnimationProps> = ({ onComplete }) => {
           transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
           className="flex flex-col items-center text-center max-w-sm w-full"
         >
-          {/* Apple-style minimalist icon */}
-          <div className="w-20 h-20 rounded-3xl bg-white border border-black/[0.06] shadow-[0_8px_30px_rgba(0,0,0,0.06)] flex items-center justify-center mb-6 text-neutral-900">
-            <svg
-              className="w-10 h-10"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.75"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M20.38 3.46L16 2a4 4 0 01-8 0L3.62 3.46a2 2 0 00-1.34 2.23l.58 3.47a1 1 0 00.99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 002-2V10h2.15a1 1 0 00.99-.84l.58-3.47a2 2 0 00-1.34-2.23z" />
-            </svg>
+          {/* Luxury Royal Seal Imprint */}
+          <div className="w-28 h-28 rounded-full bg-white border-2 border-amber-600/30 ring-4 ring-amber-500/20 luxury-seal-imprint flex items-center justify-center mb-5 p-1 overflow-hidden">
+            <img
+              src="/blazer_bank_emblem.jpg"
+              alt="Blazer Bank"
+              className="w-full h-full object-contain rounded-full"
+              referrerPolicy="no-referrer"
+            />
           </div>
 
-          <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight text-neutral-900 mb-1.5">
-            Stark Formals
+          <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-neutral-950 mb-1 font-serif">
+            Blazer Bank
           </h1>
-          <p className="text-sm text-neutral-500 mb-8 max-w-xs leading-relaxed">
-            Campus formal wear rentals & doorstep sanitization for Delhi NCR & Rohtak.
+          <p className="text-xs uppercase tracking-widest text-amber-900 font-semibold mb-2 font-serif">
+            Formal Wear • Rental • Retail
+          </p>
+          <p className="text-base text-neutral-600 mb-8 max-w-xs leading-relaxed font-serif italic">
+            Prestigious branded formal wear rentals & doorstep delivery for Delhi NCR & Rohtak.
           </p>
 
           {/* Minimalist progress bar */}

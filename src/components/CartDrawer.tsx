@@ -48,9 +48,25 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
   if (!isOpen) return null;
 
   const hasRentals = items.some(i => i.orderType === 'rental');
-  const subtotal = items.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+  const rentalItems = items.filter(i => i.orderType === 'rental');
+  const rentalSubtotal = rentalItems.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+  const retailSubtotal = items.filter(i => i.orderType !== 'rental').reduce((acc, item) => acc + (item.price * item.quantity), 0);
+  const subtotal = rentalSubtotal + retailSubtotal;
   const expressCharge = (expressDelivery && hasRentals) ? 49 : 0;
-  const total = subtotal + expressCharge;
+
+  // Pre-Damage Prevention Deposit for branded rentals (₹1,500 for blazers, ₹2,000 for combos)
+  const depositAmount = rentalItems.reduce((acc, item) => {
+    if (item.product.category === 'combo') return acc + (2000 * item.quantity);
+    if (item.product.category === 'blazer') return acc + (1500 * item.quantity);
+    return acc;
+  }, 0);
+
+  // Total payable now: if deposit exists, student pays deposit (+ retail + express); otherwise standard subtotal
+  const total = depositAmount > 0
+    ? (depositAmount + retailSubtotal + expressCharge)
+    : (subtotal + expressCharge);
+
+  const expectedRefund = depositAmount > 0 ? Math.max(0, depositAmount - rentalSubtotal) : 0;
 
   const handleCheckout = (e: React.FormEvent) => {
     e.preventDefault();
@@ -79,6 +95,8 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
         expressDelivery,
         subtotal,
         expressCharge,
+        depositAmount: depositAmount > 0 ? depositAmount : undefined,
+        expectedRefund: expectedRefund > 0 ? expectedRefund : undefined,
         total,
         status: expressDelivery ? 'DISPATCHED_RADAR' : 'OUT_FOR_CAMPUS',
         etaMinutes: expressDelivery ? selectedCampus.expressTimeMins : 120,
@@ -348,13 +366,25 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                   </div>
                 </div>
 
-                {/* Security Deposit Waiver */}
-                <div className="p-4 rounded-2xl bg-emerald-50/80 border border-emerald-200/80 text-emerald-950 text-xs leading-relaxed flex items-center gap-3 font-medium">
-                  <ShieldCheck className="w-5 h-5 text-emerald-600 shrink-0" />
-                  <span>
-                    <strong className="font-bold">₹0 Security Deposit Required:</strong> Verified students in Delhi & Rohtak with valid campus ID.
-                  </span>
-                </div>
+                {/* Pre Damage Prevention Deposit Notice */}
+                {depositAmount > 0 ? (
+                  <div className="p-4 rounded-2xl bg-amber-50 border border-amber-300/80 text-amber-950 text-xs leading-relaxed space-y-1.5">
+                    <div className="flex items-center gap-2 font-bold text-amber-950">
+                      <ShieldCheck className="w-4 h-4 text-amber-600 shrink-0" />
+                      <span>Pre Damage Prevention Deposit: ₹{depositAmount}</span>
+                    </div>
+                    <p className="text-amber-900 text-xs leading-relaxed">
+                      As all blazers are high-value branded garments (Allen Solly, Raymond, Van Heusen), a ₹{depositAmount} deposit is collected upfront. When our agent confirms no damage at your gate upon return, we deduct ₹{rentalSubtotal} and send back the remaining <strong>₹{expectedRefund}</strong> straight to your UPI!
+                    </p>
+                  </div>
+                ) : (
+                  <div className="p-4 rounded-2xl bg-emerald-50/80 border border-emerald-200/80 text-emerald-950 text-xs leading-relaxed flex items-center gap-3 font-medium">
+                    <ShieldCheck className="w-5 h-5 text-emerald-600 shrink-0" />
+                    <span>
+                      <strong className="font-bold">Verified Student Checkout:</strong> Fast dispatch to campus hostels across Delhi NCR & Rohtak.
+                    </span>
+                  </div>
+                )}
               </form>
             </div>
           )}
@@ -364,9 +394,15 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
             <div className="bg-neutral-50/90 border-t border-neutral-100 p-6 sm:p-7 space-y-4 shrink-0">
               <div className="space-y-2 text-sm">
                 <div className="flex justify-between text-neutral-500">
-                  <span>Items Subtotal:</span>
+                  <span>Rental / Items Fee:</span>
                   <span className="text-neutral-900 font-semibold">₹{subtotal}</span>
                 </div>
+                {depositAmount > 0 && (
+                  <div className="flex justify-between text-amber-900 font-semibold">
+                    <span>Pre-Damage Prevention Deposit:</span>
+                    <span>₹{depositAmount}</span>
+                  </div>
+                )}
                 <div className="flex justify-between text-emerald-800 font-medium">
                   <span>2-Hour Gate Drop:</span>
                   <span className="font-bold">Free</span>
@@ -377,12 +413,19 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                     <span className="font-bold">+₹49</span>
                   </div>
                 )}
-                <div className="flex justify-between text-emerald-800 font-medium">
-                  <span>Student Fitting & Return Pickup:</span>
-                  <span className="font-bold">Free</span>
-                </div>
+                {depositAmount > 0 && (
+                  <div className="p-3 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-900 text-xs space-y-1">
+                    <div className="flex justify-between font-bold">
+                      <span>Refund on Gate Return:</span>
+                      <span className="text-emerald-700 font-extrabold text-sm">₹{expectedRefund} back to UPI</span>
+                    </div>
+                    <div className="text-[11px] text-emerald-800 leading-snug">
+                      *Agent confirms zero damage ➔ we deduct ₹{rentalSubtotal} & immediately send back ₹{expectedRefund}.
+                    </div>
+                  </div>
+                )}
                 <div className="flex justify-between text-neutral-900 font-bold text-base pt-3 border-t border-neutral-200">
-                  <span>Total Amount:</span>
+                  <span>Total Payable Now:</span>
                   <span className="text-2xl font-extrabold tracking-tight text-neutral-900">
                     ₹{total}
                   </span>
