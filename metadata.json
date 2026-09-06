@@ -1,0 +1,6 @@
+{
+  "name": "STARK FORMALS",
+  "description": "Minimalist formal wear rental & retail for Delhi & Rohtak students with 3-size fit guarantee and 2-hour express delivery.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
