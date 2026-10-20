@@ -1,382 +1,289 @@
 import React, { useState } from 'react';
 import { 
+  Crown, 
   MapPin, 
   ShoppingBag, 
-  ShieldCheck, 
   Sparkles, 
-  Clock, 
   Ruler, 
-  Zap, 
-  ChevronDown,
-  Compass,
-  Check,
-  Package,
-  HelpCircle
+  RefreshCw, 
+  Menu, 
+  X, 
+  ShieldCheck, 
+  Package, 
+  Calendar,
+  ChevronDown 
 } from 'lucide-react';
-import { AppView, CampusLocation } from '../types';
-import { CAMPUSES } from '../data/campuses';
+import { CampusLocation, FashionDepartment, UserPreferences } from '../types';
 import { sound } from '../utils/soundEffects';
 
 interface NavbarProps {
-  currentView: AppView;
-  onViewChange: (view: AppView) => void;
-  selectedCampus: CampusLocation;
-  onCampusChange: (campus: CampusLocation) => void;
+  preferences: UserPreferences;
+  onChangePreferences: () => void;
   cartCount: number;
   onOpenCart: () => void;
   onOpenOrders: () => void;
   onOpenScanner: () => void;
-  onOpenHowItWorks?: () => void;
-  isExpressActive: boolean;
-  onToggleExpress: () => void;
+  onOpenHowItWorks: () => void;
   ordersCount: number;
+  onNavigateSection: (sectionId: string) => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
-  currentView,
-  onViewChange,
-  selectedCampus,
-  onCampusChange,
+  preferences,
+  onChangePreferences,
   cartCount,
   onOpenCart,
   onOpenOrders,
   onOpenScanner,
   onOpenHowItWorks,
-  isExpressActive,
-  onToggleExpress,
-  ordersCount
+  ordersCount,
+  onNavigateSection,
 }) => {
-  const [showCampusModal, setShowCampusModal] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const handleNavClick = (view: AppView) => {
-    sound.playBeep(600);
-    onViewChange(view);
+  const handleNav = (sectionId: string) => {
+    sound.playSelectTone();
+    setIsMobileMenuOpen(false);
+    onNavigateSection(sectionId);
   };
 
   return (
-    <header className="sticky top-0 z-40 bg-[#faf4e8]/95 backdrop-blur-xl border-b border-amber-600/20 transition-colors">
-      {/* Streamlined Top Delivery Notice Bar - Midnight Navy with Gold Accent */}
-      <div className="bg-[#080f1f] border-b border-amber-500/20 px-4 sm:px-8 lg:px-12 py-2 text-xs sm:text-sm text-neutral-300">
-        <div className="max-w-[1536px] mx-auto flex items-center justify-between gap-4">
-          <div className="flex items-center gap-2 font-medium text-neutral-200">
+    <header className="sticky top-0 z-40 bg-[#071120]/95 backdrop-blur-xl border-b border-amber-500/25 text-[#faf5ea] transition-all">
+      {/* Top Banner: Campus & Department Context Bar */}
+      <div className="bg-[#0b162c] border-b border-amber-500/15 px-4 sm:px-8 py-2 text-xs">
+        <div className="max-w-7xl mx-auto flex items-center justify-between gap-3">
+          <div className="flex items-center gap-2 truncate">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
-            <span className="text-neutral-400">Campus Hub:</span>
-            <span className="text-white font-semibold">{selectedCampus.name}</span>
-            <span className="hidden md:inline text-amber-400/80">({selectedCampus.runnerStation})</span>
+            <span className="text-amber-200/70 hidden sm:inline">Delivering to:</span>
+            <strong className="text-white font-semibold truncate">
+              {preferences.college.shortName}
+            </strong>
+            <span className="text-amber-400/40">·</span>
+            <span className="text-amber-300 font-medium">
+              {preferences.department === 'ethnic' ? 'Ethnic Couture' : 'Blazers & Formals'}
+            </span>
           </div>
 
-          <div className="flex items-center gap-3.5 shrink-0 text-xs sm:text-sm">
-            <a
-              href="https://wa.me/917093545955?text=Hi%20Blazer%20Bank%2C%20I%20need%20help%20with%20a%20blazer%20rental"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden lg:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-950/70 hover:bg-emerald-900/80 text-emerald-300 border border-emerald-500/40 transition-colors font-medium cursor-pointer"
-            >
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span>WhatsApp: <strong className="text-white">7093545955</strong></span>
-            </a>
-            <span className="hidden sm:flex items-center gap-1.5 text-neutral-300">
-              <Clock className="w-3.5 h-3.5 text-amber-400" />
-              <span>Free 2h Gate Drop Available</span>
-            </span>
-            <span className="text-amber-300 font-medium flex items-center gap-1 bg-amber-500/15 px-2.5 py-0.5 rounded-full border border-amber-500/30">
-              <ShieldCheck className="w-3.5 h-3.5 text-amber-400" />
-              <span>₹150 Dry Cleaned Lab Proof</span>
-            </span>
-          </div>
+          <button
+            type="button"
+            onClick={() => {
+              sound.playSelectTone();
+              onChangePreferences();
+            }}
+            className="flex items-center gap-1.5 text-amber-300 hover:text-white font-semibold text-xs cursor-pointer shrink-0 transition-colors"
+          >
+            <RefreshCw className="w-3 h-3" />
+            <span>Change</span>
+          </button>
         </div>
       </div>
 
-      {/* Main Action Bar */}
-      <div className="max-w-[1536px] mx-auto px-4 sm:px-8 lg:px-12 py-3.5 sm:py-4 flex items-center justify-between gap-4">
-        {/* Brand Core */}
-        <div className="flex items-center gap-4 sm:gap-6">
-          <div 
-            onClick={() => handleNavClick('rent')}
-            className="flex items-center gap-3.5 cursor-pointer group"
-          >
-            {/* Enhanced Imprinted Medallion Logo with Gold Rim */}
-            <div className="w-12 h-12 rounded-full bg-white border-2 border-amber-500/50 ring-2 ring-amber-500/30 luxury-seal-imprint p-0.5 flex items-center justify-center group-hover:scale-105 transition-all overflow-hidden shrink-0 shadow-md">
-              <img
-                src="/blazer_bank_logo.svg"
-                alt="Blazer Bank Seal"
-                className="w-full h-full object-contain rounded-full"
-                referrerPolicy="no-referrer"
-              />
-            </div>
-            <div>
-              <div className="flex items-center gap-2">
-                <span className="text-xl sm:text-2xl font-bold tracking-tight text-[#0b162c] font-serif">
-                  Blazer Bank
-                </span>
-                <span className="hidden md:inline-block text-[10px] uppercase tracking-widest px-2.5 py-0.5 rounded-full bg-amber-500/15 text-amber-900 font-bold border border-amber-500/40">
-                  Delhi & Rohtak
-                </span>
-              </div>
-              <p className="text-[10px] uppercase tracking-widest text-amber-800 font-bold hidden sm:block">
-                Formal Wear • Rental • Retail
-              </p>
-            </div>
+      {/* Main Navbar */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between gap-4">
+        {/* Brand Logo & Monogram */}
+        <div
+          onClick={() => {
+            sound.playSelectTone();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
+          className="flex items-center gap-3 cursor-pointer group shrink-0"
+        >
+          <div className="w-10 h-10 rounded-full bg-[#0b162c] border border-amber-400/60 flex items-center justify-center shadow-lg group-hover:border-amber-300 transition-colors">
+            <Crown className="w-5 h-5 text-amber-400 group-hover:scale-105 transition-transform" />
           </div>
-
-          {/* Campus Selector Dropdown Trigger */}
-          <div className="relative">
-            <button
-              onClick={() => {
-                sound.playBeep(650);
-                setShowCampusModal(!showCampusModal);
-              }}
-              className="flex items-center gap-2 px-3.5 py-2 rounded-full bg-[#f2ebd8] hover:bg-[#eae0cb] text-sm font-medium text-[#0b162c] transition-colors cursor-pointer border border-amber-600/20 shadow-xs"
-            >
-              <MapPin className="w-4 h-4 text-amber-700 shrink-0" />
-              <span className="truncate max-w-[120px] sm:max-w-[200px]">
-                {selectedCampus.name.split('(')[0]}
-              </span>
-              <ChevronDown className="w-3.5 h-3.5 text-amber-700/70" />
-            </button>
-
-            {/* Apple Popover */}
-            {showCampusModal && (
-              <div className="absolute left-0 mt-2 w-84 bg-[#fdf9f0] border border-amber-600/30 rounded-2xl shadow-[0_20px_50px_rgba(11,22,44,0.15)] p-3 z-50 animate-in fade-in zoom-in-95">
-                <div className="flex items-center justify-between px-3 py-2 border-b border-amber-600/15">
-                  <span className="text-sm font-semibold text-[#0b162c] flex items-center gap-2">
-                    <Compass className="w-4 h-4 text-amber-600" /> Select Campus Hub
-                  </span>
-                  <span className="text-xs text-amber-800 font-medium">Delhi NCR & Rohtak</span>
-                </div>
-                <div className="max-h-72 overflow-y-auto space-y-1.5 mt-2 pr-1">
-                  {CAMPUSES.map((c) => {
-                    const isSelected = selectedCampus.id === c.id;
-                    return (
-                      <button
-                        key={c.id}
-                        onClick={() => {
-                          sound.playHologramConfirm();
-                          onCampusChange(c);
-                          setShowCampusModal(false);
-                        }}
-                        className={`w-full text-left p-3 rounded-xl transition-all flex items-center justify-between cursor-pointer ${
-                          isSelected
-                            ? 'bg-[#0b162c] text-white font-semibold shadow-xs'
-                            : 'hover:bg-[#f2ebd8] text-[#0b162c]'
-                        }`}
-                      >
-                        <div>
-                          <div className="flex items-center gap-2">
-                            <span className="text-sm font-semibold">{c.name}</span>
-                            <span className={`text-xs px-2 py-0.5 rounded-full font-normal ${
-                              isSelected ? 'bg-white/20 text-white' : 'bg-amber-100 text-amber-900'
-                            }`}>
-                              {c.city}
-                            </span>
-                          </div>
-                          <p className={`text-xs mt-1 ${isSelected ? 'text-amber-300' : 'text-neutral-500'}`}>
-                            ⚡ {c.expressTimeMins}m express • {c.hostels.length} hostels
-                          </p>
-                        </div>
-                        {isSelected && <Check className="w-4 h-4 text-amber-300 shrink-0 ml-2" />}
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-            )}
+          <div>
+            <span className="font-regal text-base sm:text-lg tracking-widest text-white font-bold block leading-none">
+              BLAZER BANK
+            </span>
+            <span className="text-[9px] uppercase tracking-[0.2em] text-amber-300/80 font-medium block mt-0.5">
+              Haute College Fashion
+            </span>
           </div>
         </div>
 
-        {/* Center: Apple Segmented Pill Navigation on Medium+ Screens */}
-        <nav className="hidden lg:flex items-center p-1.5 rounded-full bg-[#ede3d1] border border-amber-600/20">
+        {/* Desktop Navigation Links (Unboxed clean typography) */}
+        <nav className="hidden lg:flex items-center gap-7 text-xs font-semibold tracking-wider uppercase text-amber-100/80">
           <button
-            onClick={() => handleNavClick('rent')}
-            className={`px-5 py-2 rounded-full text-sm font-semibold transition-all cursor-pointer flex items-center gap-2 ${
-              currentView === 'rent'
-                ? 'bg-[#0b162c] text-white shadow-sm border border-amber-500/40'
-                : 'text-[#0b162c]/80 hover:text-[#0b162c]'
-            }`}
+            type="button"
+            onClick={() => handleNav('ethnic-section')}
+            className="hover:text-amber-300 transition-colors cursor-pointer py-1"
           >
-            <span>Rent Formals</span>
-            <span className={`text-xs px-2 py-0.5 rounded-full font-bold ${
-              currentView === 'rent' ? 'bg-amber-400 text-[#0b162c]' : 'bg-amber-200/80 text-amber-950'
-            }`}>
-              ₹199/d
-            </span>
+            Ethnic Wear
           </button>
 
           <button
-            onClick={() => handleNavClick('buy')}
-            className={`px-5 py-2 rounded-full text-sm font-semibold transition-all cursor-pointer flex items-center gap-2 ${
-              currentView === 'buy'
-                ? 'bg-[#0b162c] text-white shadow-sm border border-amber-500/40'
-                : 'text-[#0b162c]/80 hover:text-[#0b162c]'
-            }`}
+            type="button"
+            onClick={() => handleNav('formals-section')}
+            className="hover:text-amber-300 transition-colors cursor-pointer py-1"
           >
-            <Sparkles className="w-3.5 h-3.5 text-amber-600" />
-            <span>Buy Essentials</span>
-            <span className={`text-xs px-2 py-0.5 rounded-full font-bold ${
-              currentView === 'buy' ? 'bg-white/20 text-white' : 'bg-amber-100 text-amber-900'
-            }`}>
-              New
-            </span>
+            Blazers & Formals
           </button>
 
           <button
-            onClick={() => handleNavClick('dryclean')}
-            className={`px-5 py-2 rounded-full text-sm font-semibold transition-all cursor-pointer flex items-center gap-2 ${
-              currentView === 'dryclean'
-                ? 'bg-[#0b162c] text-white shadow-sm border border-amber-500/40'
-                : 'text-[#0b162c]/80 hover:text-[#0b162c]'
-            }`}
+            type="button"
+            onClick={() => handleNav('garment-care-section')}
+            className="hover:text-amber-300 transition-colors cursor-pointer py-1 flex items-center gap-1 text-emerald-300"
           >
-            <ShieldCheck className="w-4 h-4 text-emerald-600" />
-            <span>Dry Cleaning</span>
-            <span className={`text-xs px-2 py-0.5 rounded-full font-bold ${
-              currentView === 'dryclean' ? 'bg-emerald-400 text-emerald-950' : 'bg-emerald-100 text-emerald-800'
-            }`}>
-              ₹149
-            </span>
+            <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
+            <span>Care Service (₹149)</span>
           </button>
 
           <button
+            type="button"
             onClick={() => {
-              sound.playScanChirp();
-              onOpenScanner();
+              sound.playSelectTone();
+              onOpenHowItWorks();
             }}
-            className="px-4 py-2 rounded-full text-sm font-medium text-[#0b162c]/80 hover:text-[#0b162c] transition-all cursor-pointer flex items-center gap-1.5"
+            className="hover:text-amber-300 transition-colors cursor-pointer py-1"
           >
-            <Ruler className="w-4 h-4 text-amber-700" />
-            <span>Fit Assistant</span>
+            How Rentals Work
           </button>
-
-          {onOpenHowItWorks && (
-            <button
-              onClick={() => {
-                sound.playBeep(620);
-                onOpenHowItWorks();
-              }}
-              className="px-4 py-2 rounded-full text-sm font-semibold text-[#0b162c] hover:bg-white/80 transition-all cursor-pointer flex items-center gap-1.5"
-            >
-              <HelpCircle className="w-4 h-4 text-amber-700" />
-              <span>How It Works</span>
-            </button>
-          )}
         </nav>
 
-        {/* Action Controls */}
-        <div className="flex items-center gap-3">
-          {/* 30-Min Flash Priority Delivery Toggle */}
+        {/* Action Controls & Bag */}
+        <div className="flex items-center gap-2 sm:gap-3">
+          {/* AI Biometric Fit Scanner Trigger */}
           <button
+            type="button"
             onClick={() => {
-              sound.playExpressPing();
-              onToggleExpress();
+              sound.playSelectTone();
+              onOpenScanner();
             }}
-            className={`flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-full text-sm font-medium transition-all cursor-pointer border ${
-              isExpressActive
-                ? 'bg-gradient-to-r from-amber-500/25 to-yellow-500/25 border-amber-500/60 text-amber-950 shadow-sm font-semibold ring-2 ring-amber-500/20'
-                : 'bg-[#fdf9f0] border-amber-600/30 text-[#0b162c] hover:border-amber-500/50'
-            }`}
-            title="2-Hour Gate Drop is FREE! Click to enable 30-Min Flash Priority Delivery (+₹49)"
+            className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#0b162c] hover:bg-[#122346] border border-amber-400/35 text-amber-300 text-xs font-semibold cursor-pointer transition-all active:scale-95 shadow-sm"
           >
-            <Zap className={`w-4 h-4 ${isExpressActive ? 'text-amber-700 fill-amber-500' : 'text-amber-600'}`} />
-            <span className="hidden sm:inline">30m Flash</span>
-            <span className={`text-xs px-2 py-0.5 rounded-full font-bold ${
-              isExpressActive ? 'bg-amber-400 text-[#0b162c]' : 'bg-[#ede3d1] text-[#0b162c]'
-            }`}>
-              +₹49
-            </span>
+            <Ruler className="w-3.5 h-3.5" />
+            <span>Fit Scanner</span>
           </button>
 
-          {/* Active Orders Tracker */}
+          {/* Orders Tracker Button */}
           {ordersCount > 0 && (
             <button
+              type="button"
               onClick={() => {
-                sound.playBeep(700);
+                sound.playSelectTone();
                 onOpenOrders();
               }}
-              className="flex items-center gap-2 px-3.5 py-2 rounded-full bg-[#f2ebd8] hover:bg-[#eae0cb] text-[#0b162c] text-sm font-medium transition-colors cursor-pointer border border-amber-600/20"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#0b162c] hover:bg-[#122346] border border-amber-400/35 text-white text-xs font-semibold cursor-pointer transition-all active:scale-95 shadow-sm"
             >
-              <Package className="w-4 h-4 text-amber-700" />
-              <span className="hidden sm:inline">Orders</span>
-              <span className="w-5 h-5 rounded-full bg-[#0b162c] text-white text-xs font-bold flex items-center justify-center">
+              <Package className="w-3.5 h-3.5 text-amber-400" />
+              <span className="hidden md:inline">Track</span>
+              <span className="w-4 h-4 rounded-full bg-amber-400 text-slate-950 font-bold text-[10px] flex items-center justify-center">
                 {ordersCount}
               </span>
             </button>
           )}
 
-          {/* Cart Bag Trigger - Deep Navy with Gold Finish */}
+          {/* Bag Button (Flying target anchor) */}
           <button
+            id="nav-bag-button"
+            type="button"
             onClick={() => {
-              sound.playBeep(750);
+              sound.playSelectTone();
               onOpenCart();
             }}
-            className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#0b162c] hover:bg-[#122449] text-white text-sm font-semibold transition-all cursor-pointer shadow-md border border-amber-500/40 active:scale-95"
+            className="relative p-2.5 rounded-full bg-[#0b162c] hover:bg-[#122346] border border-amber-400/50 text-amber-300 cursor-pointer shadow-md active:scale-95 transition-all"
+            aria-label="View Shopping Bag"
           >
-            <ShoppingBag className="w-4 h-4 text-amber-300" />
-            <span className="hidden sm:inline">Bag</span>
+            <ShoppingBag className="w-5 h-5" />
             {cartCount > 0 && (
-              <span className="ml-0.5 w-5 h-5 rounded-full bg-gradient-to-r from-amber-400 to-yellow-400 text-[#080f1f] text-xs font-bold flex items-center justify-center shadow-xs">
+              <span className="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-amber-400 text-slate-950 font-bold text-xs flex items-center justify-center shadow-lg border-2 border-[#071120] animate-pulse">
                 {cartCount}
               </span>
             )}
           </button>
+
+          {/* Mobile Menu Hamburger */}
+          <button
+            type="button"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="lg:hidden p-2.5 rounded-full bg-[#0b162c] text-amber-300 border border-amber-500/30 cursor-pointer"
+            aria-label="Toggle menu"
+          >
+            {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
         </div>
       </div>
 
-      {/* Mobile/Tablet Subnav Segmented Control */}
-      <div className="lg:hidden border-t border-amber-600/15 bg-[#f5ebd8] px-4 py-2.5">
-        <div className="flex items-center justify-center gap-1 max-w-lg mx-auto p-1 bg-[#ede3d1] rounded-full border border-amber-600/20">
-          <button
-            onClick={() => handleNavClick('rent')}
-            className={`flex-1 py-1.5 px-3 rounded-full text-sm font-semibold transition-all text-center cursor-pointer ${
-              currentView === 'rent'
-                ? 'bg-[#0b162c] text-white shadow-sm border border-amber-500/40'
-                : 'text-[#0b162c]/80 hover:text-[#0b162c]'
-            }`}
-          >
-            Rent
-          </button>
-          <button
-            onClick={() => handleNavClick('buy')}
-            className={`flex-1 py-1.5 px-3 rounded-full text-sm font-semibold transition-all text-center cursor-pointer ${
-              currentView === 'buy'
-                ? 'bg-[#0b162c] text-white shadow-sm border border-amber-500/40'
-                : 'text-[#0b162c]/80 hover:text-[#0b162c]'
-            }`}
-          >
-            Buy
-          </button>
-          <button
-            onClick={() => handleNavClick('dryclean')}
-            className={`flex-1 py-1.5 px-3 rounded-full text-sm font-semibold transition-all text-center cursor-pointer ${
-              currentView === 'dryclean'
-                ? 'bg-[#0b162c] text-white shadow-sm border border-amber-500/40'
-                : 'text-[#0b162c]/80 hover:text-[#0b162c]'
-            }`}
-          >
-            Dry Clean
-          </button>
-          <button
-            onClick={() => {
-              sound.playScanChirp();
-              onOpenScanner();
-            }}
-            className="flex-1 py-1.5 px-2.5 rounded-full text-xs sm:text-sm font-medium text-[#0b162c]/80 hover:text-[#0b162c] text-center cursor-pointer"
-          >
-            Fit Assistant
-          </button>
-          {onOpenHowItWorks && (
+      {/* Mobile Drawer Menu */}
+      {isMobileMenuOpen && (
+        <div className="lg:hidden bg-[#071120] border-t border-amber-500/20 px-6 py-6 space-y-4 shadow-2xl">
+          <div className="p-4 rounded-2xl bg-[#0b162c] border border-amber-500/30 flex items-center justify-between">
+            <div>
+              <span className="text-[10px] uppercase font-bold text-amber-400 block">
+                Active Campus Hub
+              </span>
+              <span className="text-sm font-bold text-white block">
+                {preferences.college.shortName}
+              </span>
+              <span className="text-xs text-amber-200/70">
+                {preferences.department === 'ethnic' ? 'Ethnic Wear' : 'Blazers & Formals'}
+              </span>
+            </div>
             <button
+              type="button"
               onClick={() => {
-                sound.playBeep(620);
+                setIsMobileMenuOpen(false);
+                onChangePreferences();
+              }}
+              className="px-3 py-1.5 rounded-xl gold-luxury-btn text-xs font-bold"
+            >
+              Change
+            </button>
+          </div>
+
+          <div className="grid grid-cols-1 gap-2 pt-2 text-sm font-semibold">
+            <button
+              type="button"
+              onClick={() => handleNav('ethnic-section')}
+              className="w-full text-left p-3 rounded-xl hover:bg-[#0b162c] text-white flex items-center justify-between"
+            >
+              <span>Ethnic Wear Collection</span>
+              <Sparkles className="w-4 h-4 text-amber-400" />
+            </button>
+
+            <button
+              type="button"
+              onClick={() => handleNav('formals-section')}
+              className="w-full text-left p-3 rounded-xl hover:bg-[#0b162c] text-white flex items-center justify-between"
+            >
+              <span>Blazers & Formals Collection</span>
+              <ShieldCheck className="w-4 h-4 text-amber-400" />
+            </button>
+
+            <button
+              type="button"
+              onClick={() => handleNav('garment-care-section')}
+              className="w-full text-left p-3 rounded-xl hover:bg-[#0b162c] text-emerald-300 flex items-center justify-between"
+            >
+              <span>Garment Care & Cleaning (₹149)</span>
+              <Sparkles className="w-4 h-4 text-emerald-400" />
+            </button>
+
+            <button
+              type="button"
+              onClick={() => {
+                setIsMobileMenuOpen(false);
+                onOpenScanner();
+              }}
+              className="w-full text-left p-3 rounded-xl hover:bg-[#0b162c] text-white flex items-center justify-between"
+            >
+              <span>AI Biometric Fit Scanner</span>
+              <Ruler className="w-4 h-4 text-amber-400" />
+            </button>
+
+            <button
+              type="button"
+              onClick={() => {
+                setIsMobileMenuOpen(false);
                 onOpenHowItWorks();
               }}
-              className="flex-1 py-1.5 px-2.5 rounded-full text-xs sm:text-sm font-semibold text-[#0b162c] hover:text-[#0b162c] text-center cursor-pointer"
+              className="w-full text-left p-3 rounded-xl hover:bg-[#0b162c] text-white"
             >
-              How It Works
+              How Rentals & 3-Size Backup Work
             </button>
-          )}
+          </div>
         </div>
-      </div>
+      )}
     </header>
   );
 };
-

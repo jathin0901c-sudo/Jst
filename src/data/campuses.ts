@@ -5,6 +5,7 @@ export const CAMPUSES: CampusLocation[] = [
     id: 'dtu-delhi',
     city: 'Delhi NCR',
     name: 'Delhi Technological University (DTU, Rohini)',
+    shortName: 'DTU Rohini',
     code: 'DTU-01',
     hostels: [
       'C.V. Raman Hostel (B-1)',
@@ -21,6 +22,7 @@ export const CAMPUSES: CampusLocation[] = [
     id: 'iit-delhi',
     city: 'Delhi NCR',
     name: 'IIT Delhi (Hauz Khas)',
+    shortName: 'IIT Delhi',
     code: 'IITD-02',
     hostels: [
       'Nilgiri Hostel',
@@ -37,7 +39,8 @@ export const CAMPUSES: CampusLocation[] = [
   {
     id: 'du-north',
     city: 'Delhi NCR',
-    name: 'DU North Campus (SRCC / Hansraj / Hindu / KMC)',
+    name: 'DU North Campus (SRCC / Hansraj / Hindu / KMC / Stephens)',
+    shortName: 'DU North Campus',
     code: 'DU-NC-03',
     hostels: [
       'SRCC Boys Hostel',
@@ -54,7 +57,8 @@ export const CAMPUSES: CampusLocation[] = [
   {
     id: 'nsut-delhi',
     city: 'Delhi NCR',
-    name: 'NSUT (Dwarka Sector 3)',
+    name: 'NSUT (Netaji Subhas Univ of Technology, Dwarka)',
+    shortName: 'NSUT Dwarka',
     code: 'NSUT-04',
     hostels: [
       'Ramanujan Hostel (BH-1)',
@@ -63,13 +67,14 @@ export const CAMPUSES: CampusLocation[] = [
       'Kaveri Hostel (GH-1)',
       'Godavari Hostel (GH-2)'
     ],
-    expressTimeMins: 50,
+    expressTimeMins: 45,
     runnerStation: 'Dwarka Sec-12 Station #3'
   },
   {
     id: 'iiit-delhi',
     city: 'Delhi NCR',
     name: 'IIIT Delhi (Okhla Phase III)',
+    shortName: 'IIIT Delhi',
     code: 'IIITD-05',
     hostels: [
       'Boys Hostel Block A',
@@ -84,6 +89,7 @@ export const CAMPUSES: CampusLocation[] = [
     id: 'iim-rohtak',
     city: 'Rohtak',
     name: 'IIM Rohtak (Sunaria Campus)',
+    shortName: 'IIM Rohtak',
     code: 'IIMR-01',
     hostels: [
       'Executive Hostel Tower A',
@@ -99,6 +105,7 @@ export const CAMPUSES: CampusLocation[] = [
     id: 'mdu-rohtak',
     city: 'Rohtak',
     name: 'MDU Rohtak (Maharshi Dayanand Univ)',
+    shortName: 'MDU Rohtak',
     code: 'MDUR-02',
     hostels: [
       'Tagore Hostel (Boys)',
@@ -115,6 +122,7 @@ export const CAMPUSES: CampusLocation[] = [
     id: 'pgims-rohtak',
     city: 'Rohtak',
     name: 'Pt. B.D. Sharma PGIMS Rohtak',
+    shortName: 'PGIMS Rohtak',
     code: 'PGIMS-03',
     hostels: [
       'Old Doctors Hostel',
@@ -125,5 +133,79 @@ export const CAMPUSES: CampusLocation[] = [
     ],
     expressTimeMins: 40,
     runnerStation: 'Medical Mod Outpost'
+  },
+  {
+    id: 'du-south',
+    city: 'Delhi NCR',
+    name: 'DU South Campus (Venkateswara / LSR / Gargi / JMC)',
+    shortName: 'DU South Campus',
+    code: 'DU-SC-06',
+    hostels: [
+      'Geetanjali Hostel (Girls)',
+      'Aravali PG Cluster Satya Niketan',
+      'Anand Niketan Student Enclave',
+      'LSR Residence Complex'
+    ],
+    expressTimeMins: 45,
+    runnerStation: 'Satya Niketan Central #5'
+  },
+  {
+    id: 'nift-delhi',
+    city: 'Delhi NCR',
+    name: 'NIFT Delhi (National Institute of Fashion Technology)',
+    shortName: 'NIFT Delhi',
+    code: 'NIFT-07',
+    hostels: [
+      'NIFT Girls Hostel Hauz Khas',
+      'Gulmohar Enclave PG Ward',
+      'Green Park Student Residences'
+    ],
+    expressTimeMins: 35,
+    runnerStation: 'Hauz Khas Metro Pod #2'
+  },
+  {
+    id: 'ashoka-univ',
+    city: 'Delhi NCR',
+    name: 'Ashoka University (Sonipat / Rajiv Gandhi Education City)',
+    shortName: 'Ashoka Univ',
+    code: 'ASHOKA-08',
+    hostels: [
+      'Residence Hall Alpha',
+      'Residence Hall Beta',
+      'Residence Hall Gamma',
+      'Dining Hall Tower #1'
+    ],
+    expressTimeMins: 60,
+    runnerStation: 'Sonipat GT Karnal Station'
+  },
+  {
+    id: 'jmi-delhi',
+    city: 'Delhi NCR',
+    name: 'Jamia Millia Islamia (New Delhi)',
+    shortName: 'Jamia (JMI)',
+    code: 'JMI-09',
+    hostels: [
+      'Dr. Zakir Husain Hall',
+      'Sir Syed Hall (North)',
+      'Begum Hazrat Mahal Girls Hostel',
+      'Batla House Campus Colony'
+    ],
+    expressTimeMins: 50,
+    runnerStation: 'Jamia Nagar Hub #3'
   }
 ];
+
+export const createOtherCollege = (customCollegeName: string): CampusLocation => {
+  const cleanName = customCollegeName.trim() || 'Other College';
+  return {
+    id: `custom-${cleanName.toLowerCase().replace(/[^a-z0-9]/g, '-')}`,
+    city: 'Pan-India',
+    name: cleanName,
+    shortName: cleanName.length > 20 ? `${cleanName.slice(0, 18)}...` : cleanName,
+    code: 'COLL-PAN',
+    hostels: ['Main Hostel Block', 'Girls Hostel Block', 'Boys Hostel Block', 'Off-Campus PG / Flat'],
+    expressTimeMins: 60,
+    runnerStation: 'Regional Express Courier Hub',
+    isCustom: true
+  };
+};

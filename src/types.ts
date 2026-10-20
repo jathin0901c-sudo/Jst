@@ -1,10 +1,28 @@
 export type AppView = 'rent' | 'buy' | 'dryclean' | 'scanner';
 
-export type Category = 'all' | 'blazer' | 'tie' | 'combo' | 'shirt' | 'trouser' | 'shoes';
+export type FashionDepartment = 'ethnic' | 'formals' | 'all';
+
+export type EthnicCategory = 
+  | 'sarees' 
+  | 'lehengas' 
+  | 'kurtas' 
+  | 'sherwanis' 
+  | 'indo_western' 
+  | 'dupattas_accessories';
+
+export type FormalsCategory = 
+  | 'mens_blazers' 
+  | 'womens_blazers' 
+  | 'formal_suits' 
+  | 'shirts_trousers' 
+  | 'dresses' 
+  | 'shoes_accessories';
+
+export type ProductCategory = EthnicCategory | FormalsCategory | 'blazer' | 'tie' | 'combo' | 'shirt' | 'trouser' | 'shoes';
 
 export interface HygieneBatch {
   sanitizedDate: string;
-  washCost: number; // ₹150 dry clean bill proof
+  washCost: number; // dry clean bill proof
   facility: string;
   method: string;
   inspectorId: string;
@@ -18,10 +36,12 @@ export interface Product {
   name: string;
   subtitle: string;
   brand: string;
-  category: 'blazer' | 'tie' | 'combo' | 'shirt' | 'trouser' | 'shoes';
+  department: 'ethnic' | 'formals';
+  category: ProductCategory;
   type: 'rental' | 'retail' | 'both';
-  rentPricePerDay: number; // 199 for blazers, 39 for ties, 209 for combo
-  retailPrice?: number; // for retail sale
+  rentPricePerDay: number; // e.g. 199, 299, 399
+  retailPrice?: number; // for retail sale e.g. 4999
+  cleanPrice?: number; // professional care price e.g. 149
   mrp: number; // retail MRP comparison
   image: string;
   sizes: string[];
@@ -35,23 +55,32 @@ export interface Product {
   hygieneBatch: HygieneBatch;
   tags: string[];
   expressReady: boolean;
+  availability: 'In Stock' | 'Only 2 Left' | 'Express Ready (45m)' | 'Reserved';
   description: string;
 }
 
 export interface CampusLocation {
   id: string;
-  city: 'Delhi NCR' | 'Rohtak';
+  city: 'Delhi NCR' | 'Rohtak' | 'Pan-India';
   name: string;
+  shortName: string;
   code: string;
   hostels: string[];
   expressTimeMins: number;
   runnerStation: string;
+  isCustom?: boolean;
+}
+
+export interface UserPreferences {
+  department: 'ethnic' | 'formals';
+  college: CampusLocation;
+  hasCompletedOnboarding: boolean;
 }
 
 export interface CartItem {
   cartItemId: string;
   product: Product;
-  orderType: 'rental' | 'retail';
+  orderType: 'rental' | 'retail' | 'dryclean';
   selectedSize: string;
   rentalDays?: number;
   startDate?: string;
@@ -71,14 +100,14 @@ export interface Order {
   roomNumber: string;
   studentName: string;
   studentPhone: string;
-  paymentMethod: 'UPI' | 'COD';
+  paymentMethod: 'UPI' | 'COD' | 'Card / NetBanking';
   expressDelivery: boolean;
   subtotal: number;
   expressCharge: number;
   depositAmount?: number;
   expectedRefund?: number;
   total: number;
-  status: 'DISPATCHED_RADAR' | 'OUT_FOR_CAMPUS' | 'ARRIVED_HOSTEL_GATE' | 'DELIVERED';
+  status: 'CONFIRMED' | 'DISPATCHED_RADAR' | 'OUT_FOR_CAMPUS' | 'ARRIVED_HOSTEL_GATE' | 'DELIVERED';
   etaMinutes: number;
   pickupScheduledDate?: string;
 }

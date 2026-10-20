@@ -37,13 +37,15 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
   isExpressGlobal,
   onOrderSuccess
 }) => {
-  const [hostel, setHostel] = useState(selectedCampus.hostels[0]);
+  const [hostel, setHostel] = useState(selectedCampus.hostels?.[0] || 'Main Hostel Gate');
+  const [customHostel, setCustomHostel] = useState('');
   const [roomNumber, setRoomNumber] = useState('');
   const [studentName, setStudentName] = useState('');
   const [studentPhone, setStudentPhone] = useState('');
   const [paymentMethod, setPaymentMethod] = useState<'UPI' | 'COD'>('UPI');
   const [expressDelivery, setExpressDelivery] = useState(isExpressGlobal);
   const [isProcessing, setIsProcessing] = useState(false);
+  const [validationError, setValidationError] = useState('');
 
   if (!isOpen) return null;
 
@@ -54,14 +56,15 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
   const subtotal = rentalSubtotal + retailSubtotal;
   const expressCharge = (expressDelivery && hasRentals) ? 49 : 0;
 
-  // Pre-Damage Prevention Deposit for branded rentals (₹1,500 for blazers, ₹2,000 for combos)
+  // Pre-Damage Prevention Deposit for branded rentals
   const depositAmount = rentalItems.reduce((acc, item) => {
+    if (item.product.department === 'ethnic') return acc + (1000 * item.quantity);
     if (item.product.category === 'combo') return acc + (2000 * item.quantity);
-    if (item.product.category === 'blazer') return acc + (1500 * item.quantity);
+    if (item.product.category === 'blazer' || item.product.category === 'mens_blazers' || item.product.category === 'formal_suits') return acc + (1500 * item.quantity);
     return acc;
   }, 0);
 
-  // Total payable now: if deposit exists, student pays deposit (+ retail + express); otherwise standard subtotal
+  // Total payable now
   const total = depositAmount > 0
     ? (depositAmount + retailSubtotal + expressCharge)
     : (subtotal + expressCharge);
@@ -72,22 +75,24 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
     e.preventDefault();
     if (items.length === 0) return;
 
-    if (!roomNumber || !studentName || !studentPhone) {
-      alert('Please complete hostel room number, student name, and phone.');
+    if (!roomNumber.trim() || !studentName.trim() || !studentPhone.trim()) {
+      setValidationError('Please complete hostel room number, student name, and mobile number.');
       return;
     }
 
+    setValidationError('');
     sound.playHologramConfirm();
     setIsProcessing(true);
 
     setTimeout(() => {
       const orderId = `OD-${Math.floor(100000 + Math.random() * 900000)}`;
+      const finalHostelName = customHostel.trim() || hostel;
       const newOrder: Order = {
         id: orderId,
         createdAt: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
         items: [...items],
         campus: selectedCampus.name,
-        hostel,
+        hostel: finalHostelName,
         roomNumber,
         studentName,
         studentPhone,
@@ -264,6 +269,12 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                   Hostel Delivery Details
                 </span>
 
+                {validationError && (
+                  <div className="p-3 rounded-xl bg-red-100 border border-red-300 text-red-900 text-xs font-semibold">
+                    {validationError}
+                  </div>
+                )}
+
                 <div>
                   <label className="text-neutral-600 text-xs font-semibold block mb-1.5">Campus</label>
                   <div className="text-[#0b162c] font-bold text-sm p-3 bg-[#fdf9f0] rounded-2xl border border-amber-600/20 font-serif">
@@ -272,16 +283,26 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                 </div>
 
                 <div>
-                  <label className="text-neutral-600 text-xs font-semibold block mb-1.5">Hostel / Hall</label>
-                  <select
-                    value={hostel}
-                    onChange={(e) => setHostel(e.target.value)}
-                    className="w-full bg-[#fdf9f0] border border-amber-600/25 rounded-2xl p-3 text-[#0b162c] font-medium focus:border-amber-500 outline-none cursor-pointer text-sm transition-colors"
-                  >
-                    {selectedCampus.hostels.map(h => (
-                      <option key={h} value={h}>{h}</option>
-                    ))}
-                  </select>
+                  <label className="text-neutral-600 text-xs font-semibold block mb-1.5">Hostel / Hall / PG</label>
+                  {selectedCampus.hostels && selectedCampus.hostels.length > 0 ? (
+                    <select
+                      value={hostel}
+                      onChange={(e) => setHostel(e.target.value)}
+                      className="w-full bg-[#fdf9f0] border border-amber-600/25 rounded-2xl p-3 text-[#0b162c] font-medium focus:border-amber-500 outline-none cursor-pointer text-sm transition-colors"
+                    >
+                      {selectedCampus.hostels.map(h => (
+                        <option key={h} value={h}>{h}</option>
+                      ))}
+                    </select>
+                  ) : (
+                    <input
+                      type="text"
+                      placeholder="e.g. Tagore Hostel, Girls PG..."
+                      value={customHostel}
+                      onChange={(e) => setCustomHostel(e.target.value)}
+                      className="w-full bg-[#fdf9f0] border border-amber-600/25 rounded-2xl p-3 text-[#0b162c] font-medium focus:border-amber-500 outline-none text-sm transition-colors"
+                    />
+                  )}
                 </div>
 
                 <div className="grid grid-cols-2 gap-3">
